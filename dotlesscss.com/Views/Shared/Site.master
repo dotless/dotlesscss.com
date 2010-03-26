@@ -1,0 +1,20 @@
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Less Css for .NET</title>
+  <meta type="description" content="A .NET port of the ruby less css libary. Dynamic CSS for .net. Dynamic CSS for dotnet.less css the .NET version. LessCss on windows. Less for .NET" />
+  <meta type="keywords" content="less, lesscss, .net, less css, css preprocessor, less for .NET, dotnet, c#, c-sharp, c sharp" />
+  <link href="<%= Url.Content("~/Content/Site.css") %>" rel="stylesheet" type="text/css" />
+
+  <asp:ContentPlaceHolder id="HeadContent" runat="server">
+  </asp:ContentPlaceHolder>
+</head>
+<body>
+  <div>
+    <asp:ContentPlaceHolder id="MainContent" runat="server">        
+    </asp:ContentPlaceHolder>
+  </div>
+</body>
+</html>
