@@ -88,6 +88,10 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\beta.png" />
+    <Content Include="Content\Images\download_button.png" />
+    <Content Include="Content\Images\engineroom_logo.jpg" />
+    <Content Include="Content\Images\logo.jpg" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Site.master" />
   </ItemGroup>
