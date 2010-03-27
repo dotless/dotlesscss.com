@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace dotlesscss.com.Controllers
 {
+  [OutputCache(Duration = 86400, VaryByParam="None")]
   public class HomeController : Controller
   {
     //
