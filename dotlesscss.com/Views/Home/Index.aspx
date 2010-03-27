@@ -16,7 +16,7 @@
         of code.
       </p>
       <div class="code_example rounded_corners">
-        <pre class="less_example"> 
+        <pre class="less_example">
 <span>@brand_color</span>: #4D926F;
  
 #header {
@@ -36,8 +36,7 @@ h2 {
         the power to do create complex relationships between properties.
       </p>
       <div class="code_example rounded_corners">
-        <pre class="less_example"> 
-
+        <pre class="less_example">
 @the-border: 1px;
 @base-color: #111;
  
@@ -63,7 +62,7 @@ h2 {
         for whole classes.
       </p>
       <div class="code_example rounded_corners">
-        <pre class="less_example"> 
+        <pre class="less_example">
 .rounded_corners(@radius: 5px) {
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
@@ -87,7 +86,7 @@ h2 {
         style sheets shorter.
       </p>
       <div class="code_example rounded_corners">
-        <pre class="less_example"> 
+        <pre class="less_example">
 #header {
   color: red;
   <span>a { 
