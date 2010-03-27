@@ -8,7 +8,7 @@
     <div class="content">
       <ul>
         <li><a href="http://github.com/dotless/dotless" target="_blank" title="See Source Code">See Source Code</a></li>
-        <li><a href="http://clicktotweet.com/d45UW" target="_blank" title="Tweet about us">Tweet about .Less</a></li>
+        <li><a href="http://twitter.com/home?status={.LESS}%20extends%20CSS%20with%20variables,%20mixins,%20operations%20and%20nested%20rules%20http://www.dotlesscss.com" target="_blank" title="Tweet about us">Tweet about .Less</a></li>
         <li><a href="http://groups.google.com/group/dotless" target="_blank" title="Discuss DotLess With Us">Discuss .Less</a></li>
       </ul>
       <img src="<%= Url.Content("~/Content/Images/logo.jpg") %>" alt="dotless - a LESS css port for .NET" id="logo"  /> 
