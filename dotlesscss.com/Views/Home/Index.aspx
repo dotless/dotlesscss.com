@@ -64,10 +64,10 @@ h2 {
       </p>
       <div class="code_example rounded_corners">
         <pre class="less_example"> 
-.rounded_corners {
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
+.rounded_corners(@radius: 5px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
 }
  
 #header {
@@ -75,7 +75,7 @@ h2 {
 }
  
 #footer {
-  <span>.rounded_corners</span>;
+  <span>.rounded_corners(10px)</span>;
 }
 </pre>
       </div>
