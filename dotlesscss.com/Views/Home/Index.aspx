@@ -59,7 +59,6 @@
 h2 {
   color: <span>@brand_color</span>;
 }
-
 </pre>
       </div>
     
@@ -84,7 +83,7 @@ h2 {
 #footer { 
   color: <span>(@base-color + #111) * 1.5</span>; 
 }
-			  </pre>
+</pre>
       </div>
     </div>
       
@@ -111,7 +110,7 @@ h2 {
 #footer {
   <span>.rounded_corners</span>;
 }
-			  </pre>
+</pre>
       </div>
 
       <h3>Nested Rules</h3>
@@ -130,7 +129,7 @@ h2 {
     }</span> 
 
 }
-		    </pre>
+</pre>
       </div>
     </div>
 
@@ -153,7 +152,7 @@ h2 {
 dotless.Core.LessCssHttpHandler
 ,dotless.Core" validate="false" 
 path="*.LESS" verb="*"/&gt;
-          </pre>
+</pre>
         </div>
         
         <hr />
@@ -165,7 +164,7 @@ path="*.LESS" verb="*"/&gt;
 type="dotless.Core.configuration.
 DotlessConfigurationSectionHandler
 ,dotless.Core" /&gt;
-          </pre>
+</pre>
         </div>
         <p>Now you can configure if you enable Caching and minifying or the Css output</p> 
         <div class="code_example">
@@ -173,7 +172,7 @@ DotlessConfigurationSectionHandler
 &lt;dotless 
 minifyCss="false" 
 cacheEnabled="true" /&gt;
-          </pre>
+</pre>
         </div>
 
         <hr />
