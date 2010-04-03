@@ -99,7 +99,7 @@ h2 {
         <hr />
 
         <h3 class="option">2. Include our reference to your web project</h3>
-        <p><img src="../../Content/Images/references.jpg" alt="Add a few reference" /></p>   
+        <p><img src="~/Content/Images/references.jpg" alt="Add a few reference" /></p>   
         <hr />
         <h3 class="option">3. Add a new HttpHandler to your Web.Config</h3>
         <p>Lets make the dotless processor handle our .LESS files. </p>
@@ -141,7 +141,7 @@ cacheEnabled="true" /&gt;
       
       <div style="float:right;">
         <a href="http://www.engineroomapps.com" title="Thanks to - Engine Room Apps">
-          <img src="<%= Url.Content("~/Content/Images/engineroom_logo.jpg") %>"  alt="Engine Room Apps" />
+          <img src="~/Content/Images/engineroom_logo.jpg"  alt="Engine Room Apps" />
         </a>
       </div>
     </div>

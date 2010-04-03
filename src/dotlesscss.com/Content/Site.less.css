@@ -161,7 +161,7 @@ h3 {
   }
   .less.code_example {
     .rounded_corners();
-    pre span { color: #003466; }
+    pre span { color: #000000; }
   }
   .code_example {
     border: solid 1px #b3b3b3;

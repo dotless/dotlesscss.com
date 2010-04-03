@@ -41,7 +41,7 @@
       </div> 
       <div class="right">
         <a href="http://www.dotlesscss.com:8081/viewLog.html?buildId=lastPinned&buildTypeId=bt3&tab=artifacts&guest=1" title="Get dotless" target="_blank">
-          <img src="<%= Url.Content("~/Content/Images/download_button.png") %>" style="border:0;" alt="download"  />
+          <img src="~/Content/Images/download_button.png" style="border:0;" alt="download"  />
         </a> 
       </div>
     </div>
