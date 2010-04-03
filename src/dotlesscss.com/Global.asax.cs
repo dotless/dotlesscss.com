@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Spark;
 
 namespace dotlesscss.com
 {
@@ -29,6 +30,15 @@ namespace dotlesscss.com
       AreaRegistration.RegisterAllAreas();
 
       RegisterRoutes(RouteTable.Routes);
+
+
+      ISparkSettings settings = new SparkSettings()
+        .SetStatementMarker("#>");                    // change the statement marker because css lines may start with #
+
+      var viewFactory = new Spark.Web.Mvc.SparkViewFactory(settings);
+
+      ViewEngines.Engines.Clear();
+      ViewEngines.Engines.Add(viewFactory);
     }
   }
 }

@@ -1,0 +1,269 @@
+﻿
+<ul id="documentation">
+  <li>
+    <h1>Using .less</h1>
+    <ul>
+      <li>
+        <markdown>
+From the command line
+---------------------
+
+The command line tool is `dotless.Compiler.exe`, and it looks something like this:
+
+    $ dotless.Compiler source [destination]
+
+The `source` is the .LESS file you want to compile, and the `destination` is the (optional) CSS file you want to compile it to. 
+If you don't specify a destination, `dotless.Compiler` will base it on the source you specified:
+
+    $ lessc style.less style.less.css
+    $ lessc style.less
+
+Are equivalent.
+        </markdown>
+      </li>
+      <li>
+              <markdown>
+Watching
+--------
+
+`dotless.Compiler` also comes with an option to watch your `.less` file for any change, and recompile it automatically:
+
+    $ lessc style.less --watch
+
+Now, whenever you save your file, `dotless.Compiler` will try to compile it. If there are errors, it will ask you to fix them before continuing.
+
+    Compiling style.less -> style.less.css [Done]
+    Hit Enter to stop watching
+    Watching style.less for changes
+    Found change in file. Recompiling...
+    Compiling style.less -> style.less.css [Done]
+
+        </markdown>
+      </li>
+      <li>
+        <markdown>
+From code
+---------
+
+Add a reference to dotless.Core.dll
+
+    using dotless.Core
+    
+    var factory = new EngineFactory();
+    var engine = factory.GetEngine(DotlessConfiguration.Default);
+    var css = engine.TransformToCss(new LessSourceObject {Content = "div { width: 1 + 1 }"});
+
+which will output
+
+    div { width: 2; }
+        </markdown>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h1>The language</h1>
+    <ul>
+      <li>
+        <markdown>
+Variables
+---------
+
+These are pretty self-explanatory:
+
+    @nice-blue: #5B83AD;
+    @light-blue: @nice-blue + #111;
+
+    #header { color: @light-blue; }
+
+Outputs:
+
+    #header { color: #6c94be; }
+
+Note that variables are actually 'constants' in that they can only be defined once.
+        </markdown>
+      </li>
+      <li>
+        <markdown>
+Mixins
+------
+
+Mixins are a way of including ('mixing in') a bunch of properties from one rule-set into another rule-set. So say we have the following class:
+
+    .bordered {
+      border-top: dotted 1px black;
+      border-bottom: solid 2px black;
+    }
+
+And we want to use these properties inside other rule-sets. Well, we just have to drop in the name of the class where we want the properties, like so:
+
+    #menu a {
+      color: #111;
+      .bordered;
+    }
+
+    .post a {
+      color: red;
+      .bordered;
+    }
+
+The properties of the `.bordered` class will now appear in both `#menu a` and `.post a`. (Note that you can also use `#id`s as mixins)
+        </markdown>
+      </li>
+      <li>
+        <markdown>
+Nested Rules
+------------
+
+.LESS gives you the ability to use nesting instead of, or in combination with cascading. Lets say we have the following CSS:
+
+    #header { color: black; }
+    #header .navigation {
+      font-size: 12px;
+    }
+    #header .logo { 
+      width: 300px; 
+    }
+    #header .logo:hover {
+      text-decoration: none;
+    }
+
+In .LESS, we can also write it this way:
+
+    #header {
+      color: black;
+
+      .navigation {
+        font-size: 12px;
+      }
+      .logo {
+        width: 300px;
+        :hover { text-decoration: none }
+      }
+    }
+
+The resulting code is more concise, and mimics the structure of your `html`.
+        </markdown>
+      </li>
+      <li>
+        <markdown>
+Operators
+---------
+
+Any number, color or variable can be operated on. Here are a couple of examples:
+
+    @base: 5%;
+    @filler: @base * 2;
+    @other: @base + @filler;
+
+    color: #888 / 4;
+    background-color: @base-color + #111;
+    height: 100% / 2 + @filler;
+
+The output is pretty much what you expect—.LESS understands the difference between colors and units. If a unit is used in an operation, like in:
+
+    @var: 1px + 5;
+
+.LESS will use that unit for the final output—`6px` in this case.
+        </markdown>
+      </li>
+      <li>
+        <markdown>
+Functions
+---------
+
+
+        </markdown>
+      </li>
+      <li>
+        <markdown>
+Namespaces &amp; Accessors
+--------------------------
+
+Sometimes, you may want to group your variables or mixins, for organizational purposes, or just to offer some encapsulation. 
+You can do this pretty intuitively in .LESS—say you want to bundle some mixins and variables under `#bundle`, for later re-use, or for distributing:
+
+    #bundle {
+      .button {
+        display: block;
+        border: 1px solid black;
+        background-color: grey;
+        :hover { background-color: white }
+      }
+      .tab { ... }
+      .citation { ... }
+    }
+
+Now if we want to mixin the `.button` class in our `#header a`, we can do:
+
+    #header a {
+      color: orange;
+      #bundle > .button;
+    }
+
+.LESS also allows you to access specific properties or variables from different rule-sets:
+
+    #defaults {
+      @width: 960px;
+      @color: black;
+    }
+
+    .article { color: #294366; }
+
+    .comment {
+      width: #defaults[@width];
+      color: .article['color']; 
+    }
+
+Variables and accessors can be used almost interchangeably, use whichever is best suited for the situation—accessors 
+might make more sense if that property only needs to be accessed once.
+        </markdown>
+      </li>
+      <li>
+        <markdown>
+Scope
+-----
+
+Scope in .LESS is very similar to that of programming languages. Variables and mixins are first looked for locally, 
+and if they aren't found, the compiler will look in the parent scope, and so on. Note that the order of declaration does matter.
+
+    @var: red;
+
+    #page {
+      @var: white;
+      #header {
+        color: @var; // white
+      }
+    }
+
+        </markdown>
+      </li>
+      <li>
+        <markdown>
+Comments
+--------
+
+Both C-style and inline comments are authorized:
+
+    /* One hell of a comment */
+    @var: red;
+
+    // Get in line!
+    @var: white;
+
+        </markdown>
+      </li>
+      <li>
+        <markdown>
+Importing
+---------
+
+Importing works pretty much as expected. You can import a `.less` file, and all the variables in it will be available. If the file is a `.less`, the extension is optional:
+
+    @import "library";
+    @import "typo.css";
+
+        </markdown>
+      </li>
+    </ul>
+  </li>
+</ul>

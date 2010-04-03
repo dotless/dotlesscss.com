@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Spark, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Spark.dll</HintPath>
+    </Reference>
+    <Reference Include="Spark.Web.Mvc, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Spark.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.ComponentModel.DataAnnotations">
@@ -92,9 +100,10 @@
     <Content Include="Content\Images\download_button.png" />
     <Content Include="Content\Images\engineroom_logo.jpg" />
     <Content Include="Content\Images\logo.jpg" />
-    <Content Include="Views\Home\docs.aspx" />
-    <Content Include="Views\Home\Index.aspx" />
-    <Content Include="Views\Shared\Site.master" />
+    <None Include="Views\Home\docs.spark" />
+    <None Include="Views\Home\Index.spark" />
+    <None Include="Views\Layouts\Application.spark" />
+    <None Include="Views\Shared\_global.spark" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

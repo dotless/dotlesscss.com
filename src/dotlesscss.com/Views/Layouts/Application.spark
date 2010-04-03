@@ -1,21 +1,17 @@
-<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Less Css for .NET</title>
+  <title>${Title}</title>
   <meta type="description" content="A .NET port of the ruby less css libary. Dynamic CSS for .net. Dynamic CSS for dotnet.less css the .NET version. LessCss on windows. Less for .NET" />
   <meta type="keywords" content="less, lesscss, .net, less css, css preprocessor, less for .NET, dotnet, c#, c-sharp, c sharp" />
-  <link href="<%= Url.Content("~/Content/Site.css") %>" rel="stylesheet" type="text/css" />
+  <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
-  <asp:ContentPlaceHolder id="HeadContent" runat="server">
-  </asp:ContentPlaceHolder>
+  <use content="head"/>
 </head>
 <body>
   <div id="hd1">
     <div class="content">
       <ul>
-        <% //<li>< %= Html.ActionLink("Documentation", "docs", "Home") % ></li> %>
+        #> //<li>${ Html.ActionLink("Documentation", "docs", "Home") }</li>
         <li><a href="http://github.com/dotless/dotless" target="_blank" title="See Source Code">See Source Code</a></li>
         <li>
           <a href="http://twitter.com/home?status={.LESS}%20extends%20CSS%20with%20variables,%20mixins,%20operations%20and%20nested%20rules%20http://www.dotlesscss.com" target="_blank" title="Tweet about us">
@@ -24,9 +20,9 @@
         </li>
         <li><a href="http://groups.google.com/group/dotless" target="_blank" title="Discuss DotLess With Us">Discuss .Less</a></li>
       </ul>
-      <img src="<%= Url.Content("~/Content/Images/logo.jpg") %>" alt="dotless - a LESS css port for .NET" id="logo"  /> 
+      <img src="~/Content/Images/logo.jpg" alt="dotless - a LESS css port for .NET" id="logo"  /> 
       <a href="#stay" title="Dotless - is in beta so please bear us through the issues">
-        <img src="<%= Url.Content("~/Content/Images/beta.png") %>" alt="dotless - is in beta so bear us" id="beta"  />
+        <img src="~/Content/Images/beta.png" alt="dotless - is in beta so bear us" id="beta"  />
       </a> 
     </div>
   </div>
@@ -51,8 +47,7 @@
     </div>
   </div>
   <div id="bd1">
-    <asp:ContentPlaceHolder id="MainContent" runat="server">        
-    </asp:ContentPlaceHolder>
+    <use content="view"/>
   </div>
   <div id="ft1">
     <div class="content">
