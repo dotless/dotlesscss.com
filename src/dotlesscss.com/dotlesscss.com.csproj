@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dotless.Core, Version=1.0.0.5, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\dotless.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Spark, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Spark.dll</HintPath>
@@ -77,7 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Site.less.css" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
@@ -100,10 +104,25 @@
     <Content Include="Content\Images\download_button.png" />
     <Content Include="Content\Images\engineroom_logo.jpg" />
     <Content Include="Content\Images\logo.jpg" />
+    <Content Include="Content\Site.css">
+      <DependentUpon>T4CSS.tt</DependentUpon>
+    </Content>
+    <None Include="Content\T4CSS.log">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4CSS.tt</DependentUpon>
+    </None>
+    <None Include="Content\T4CSS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4CSS.log</LastGenOutput>
+    </None>
     <None Include="Views\Home\docs.spark" />
     <None Include="Views\Home\Index.spark" />
     <None Include="Views\Layouts\Application.spark" />
     <None Include="Views\Shared\_global.spark" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

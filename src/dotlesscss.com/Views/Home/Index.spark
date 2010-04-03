@@ -8,8 +8,8 @@
         them throughout the style sheet, making global changes as easy as changing one line
         of code.
       </p>
-      <div class="code_example rounded_corners">
-        <pre class="less_example">
+      <div class="less code_example">
+        <pre>
 <span>@brand_color</span>: #4D926F;
  
 #header {
@@ -28,8 +28,8 @@ h2 {
         let you add, subtract, divide and multiply property values and colors, giving you
         the power to do create complex relationships between properties.
       </p>
-      <div class="code_example rounded_corners">
-        <pre class="less_example">
+      <div class="less code_example">
+        <pre>
 @the-border: 1px;
 @base-color: #111;
  
@@ -46,7 +46,7 @@ h2 {
       </div>
     </div>
       
-    <div class="section rounded_corners">
+    <div class="section">
       <h3>Mixins</h3>
 
       <p>
@@ -54,8 +54,8 @@ h2 {
         including the class name as one of its properties. It's just like variables, but
         for whole classes.
       </p>
-      <div class="code_example rounded_corners">
-        <pre class="less_example">
+      <div class="less code_example">
+        <pre>
 .rounded_corners(@radius: 5px) {
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
@@ -78,8 +78,8 @@ h2 {
         can simply nest selectors inside other selectors. This makes inheritance clear and
         style sheets shorter.
       </p>
-      <div class="code_example rounded_corners">
-        <pre class="less_example">
+      <div class="less code_example">
+        <pre>
 #header {
   color: red;
   <span>a { 
@@ -106,7 +106,7 @@ h2 {
         <p>Add this entry to the HttpHandlers section of your Web.Config:</p>
         
         <div class="code_example">
-          <pre class="less_example">
+          <pre>
 &lt;add type="
 dotless.Core.LessCssHttpHandler
 ,dotless.Core" validate="false" 
@@ -118,7 +118,7 @@ path="*.LESS" verb="*"/&gt;
         <h3 class="option">4. Add a few configuration sections (optional)</h3>
         <p>First add our config handler in the "configSections" node of your web.config</p> 
         <div class="code_example">
-          <pre class="less_example">
+          <pre>
 &lt;section name="dotless" 
 type="dotless.Core.configuration.
 DotlessConfigurationSectionHandler
@@ -127,7 +127,7 @@ DotlessConfigurationSectionHandler
         </div>
         <p>Now you can configure if you enable Caching and minifying or the Css output</p> 
         <div class="code_example">
-          <pre class="less_example">
+          <pre>
 &lt;dotless 
 minifyCss="false" 
 cacheEnabled="true" /&gt;

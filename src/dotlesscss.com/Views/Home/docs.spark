@@ -1,10 +1,11 @@
 ﻿
-<ul id="documentation">
-  <li>
-    <h1>Using .less</h1>
-    <ul>
-      <li>
-        <markdown>
+<div id="documentation" class="content">
+  <markdown>
+
+Using .less
+===========
+
+
 From the command line
 ---------------------
 
@@ -15,20 +16,18 @@ The command line tool is `dotless.Compiler.exe`, and it looks something like thi
 The `source` is the .LESS file you want to compile, and the `destination` is the (optional) CSS file you want to compile it to. 
 If you don't specify a destination, `dotless.Compiler` will base it on the source you specified:
 
-    $ lessc style.less style.less.css
-    $ lessc style.less
+    $ dotless.Compiler style.less style.less.css
+    $ dotless.Compiler style.less
 
 Are equivalent.
-        </markdown>
-      </li>
-      <li>
-              <markdown>
+
+
 Watching
 --------
 
 `dotless.Compiler` also comes with an option to watch your `.less` file for any change, and recompile it automatically:
 
-    $ lessc style.less --watch
+    $ dotless.Compiler style.less --watch
 
 Now, whenever you save your file, `dotless.Compiler` will try to compile it. If there are errors, it will ask you to fix them before continuing.
 
@@ -38,10 +37,7 @@ Now, whenever you save your file, `dotless.Compiler` will try to compile it. If 
     Found change in file. Recompiling...
     Compiling style.less -> style.less.css [Done]
 
-        </markdown>
-      </li>
-      <li>
-        <markdown>
+
 From code
 ---------
 
@@ -56,15 +52,13 @@ Add a reference to dotless.Core.dll
 which will output
 
     div { width: 2; }
-        </markdown>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <h1>The language</h1>
-    <ul>
-      <li>
-        <markdown>
+
+
+
+The language
+============
+
+
 Variables
 ---------
 
@@ -80,10 +74,8 @@ Outputs:
     #header { color: #6c94be; }
 
 Note that variables are actually 'constants' in that they can only be defined once.
-        </markdown>
-      </li>
-      <li>
-        <markdown>
+
+
 Mixins
 ------
 
@@ -107,10 +99,8 @@ And we want to use these properties inside other rule-sets. Well, we just have t
     }
 
 The properties of the `.bordered` class will now appear in both `#menu a` and `.post a`. (Note that you can also use `#id`s as mixins)
-        </markdown>
-      </li>
-      <li>
-        <markdown>
+
+
 Nested Rules
 ------------
 
@@ -142,10 +132,8 @@ In .LESS, we can also write it this way:
     }
 
 The resulting code is more concise, and mimics the structure of your `html`.
-        </markdown>
-      </li>
-      <li>
-        <markdown>
+
+
 Operators
 ---------
 
@@ -164,18 +152,13 @@ The output is pretty much what you expect—.LESS understands the difference bet
     @var: 1px + 5;
 
 .LESS will use that unit for the final output—`6px` in this case.
-        </markdown>
-      </li>
-      <li>
-        <markdown>
+
+
 Functions
 ---------
 
+// todo
 
-        </markdown>
-      </li>
-      <li>
-        <markdown>
 Namespaces &amp; Accessors
 --------------------------
 
@@ -216,10 +199,8 @@ Now if we want to mixin the `.button` class in our `#header a`, we can do:
 
 Variables and accessors can be used almost interchangeably, use whichever is best suited for the situation—accessors 
 might make more sense if that property only needs to be accessed once.
-        </markdown>
-      </li>
-      <li>
-        <markdown>
+
+
 Scope
 -----
 
@@ -235,10 +216,7 @@ and if they aren't found, the compiler will look in the parent scope, and so on.
       }
     }
 
-        </markdown>
-      </li>
-      <li>
-        <markdown>
+
 Comments
 --------
 
@@ -250,10 +228,7 @@ Both C-style and inline comments are authorized:
     // Get in line!
     @var: white;
 
-        </markdown>
-      </li>
-      <li>
-        <markdown>
+
 Importing
 ---------
 
@@ -262,8 +237,5 @@ Importing works pretty much as expected. You can import a `.less` file, and all 
     @import "library";
     @import "typo.css";
 
-        </markdown>
-      </li>
-    </ul>
-  </li>
-</ul>
+  </markdown>
+</div>
