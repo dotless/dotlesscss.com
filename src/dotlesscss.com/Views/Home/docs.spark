@@ -157,7 +157,20 @@ The output is pretty much what you expect—.LESS understands the difference bet
 Functions
 ---------
 
-// todo
+.LESS defines some useful functions which are called using the normal CSS function syntax
+
+    #main {
+      color: hsl(0, 100%, 50%)
+    }
+
+Is compiled to
+
+    #main {
+      color: #ff0000;
+    }
+
+See the [function reference](${ Url.Action("functions", "Home") }) for a full list of available functions.
+
 
 Namespaces &amp; Accessors
 --------------------------
