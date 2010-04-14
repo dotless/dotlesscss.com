@@ -79,6 +79,22 @@ style sheets shorter.
     }</span>
 }</code></pre>
 
+
+### Functions
+
+.LESS implements a number of functions to make working with colors easier.
+
+<pre><code>@base-color: <span>hsl(30, 40%, 60%)</span>
+
+#header {
+  color: <span>lightness(@base-color, 10%)</span>;
+}
+
+#header {
+  color: <span>saturation(@base-color, -10%)</span>;
+}
+</code></pre>
+
       </markdown>
     </div>
 
