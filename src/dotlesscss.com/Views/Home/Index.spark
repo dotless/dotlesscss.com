@@ -90,7 +90,7 @@ style sheets shorter.
   color: <span>lightness(@base-color, 10%)</span>;
 }
 
-#header {
+#footer {
   color: <span>saturation(@base-color, -10%)</span>;
 }
 </code></pre>
