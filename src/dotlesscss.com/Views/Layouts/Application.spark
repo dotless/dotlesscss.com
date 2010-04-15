@@ -11,7 +11,7 @@
   <div id="hd1">
     <div class="content">
       <ul>
-        #> //<li>${ Html.ActionLink("Documentation", "docs", "Home") }</li>
+        <li>${ Html.ActionLink("Documentation", "docs", "Home") }</li>
         <li><a href="http://github.com/dotless/dotless" target="_blank" title="See Source Code">See Source Code</a></li>
         <li>
           <a href="http://twitter.com/home?status={.LESS}%20extends%20CSS%20with%20variables,%20mixins,%20operations%20and%20nested%20rules%20http://www.dotlesscss.com" target="_blank" title="Tweet about us">
