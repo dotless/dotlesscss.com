@@ -8,7 +8,7 @@
   <use content="head"/>
 </head>
 <body>
-  <div id="hd1">
+  <div id="header1">
     <div class="content">
       <ul>
         <li>${ Html.ActionLink("Documentation", "docs", "Home") }</li>
@@ -26,7 +26,7 @@
       </a> 
     </div>
   </div>
-  <div id="hd2">
+  <div id="header2">
     <div class="content">
       <div class="left">
         <h1>Write regular CSS with your .NET apps, <br />
@@ -46,10 +46,10 @@
       </div>
     </div>
   </div>
-  <div id="bd1">
+  <div id="body1">
     <use content="view"/>
   </div>
-  <div id="ft1">
+  <div id="footer1">
     <div class="content">
     </div>
   </div>
