@@ -36,7 +36,9 @@ task Build -depends Init {
 
 task Release -depends Init {
     new-item $target_dir -itemType directory -ErrorAction SilentlyContinue
+	new-item $target_dir\bin -itemType directory -ErrorAction SilentlyContinue
     Copy-Item src\dotlesscss.com\* ..\dotless\current\ -recurse -force
+	Copy-Item lib\* ..\dotless\current\bin\ -recurse -force
     
     Write-host "-----------------------------"
     Write-Host -ForegroundColor Cyan "dotless website was successfully deployed."
