@@ -28,17 +28,17 @@ task Init -depends Clean {
 }
 
 task Build -depends Init {
-    msbuild $source_dir\dotlesscss.com\dotlesscss.com.csproj /p:OutDir=$build_dir /p:Configuration=$config
+    msbuild $source_dir\dotlesscss.com\dotlesscss.com.csproj /p:OutDir=$release_dir
     if ($lastExitCode -ne 0) {
         throw "Error: compile failed"
     }
 }
 
-task Release -depends Init {
+task Release -depends Build {
     new-item $target_dir -itemType directory -ErrorAction SilentlyContinue
-	new-item $target_dir\bin -itemType directory -ErrorAction SilentlyContinue
+	#new-item $target_dir\bin -itemType directory -ErrorAction SilentlyContinue
     Copy-Item src\dotlesscss.com\* ..\dotless\current\ -recurse -force
-	Copy-Item lib\* ..\dotless\current\bin\ -recurse -force
+	Copy-Item $release_dir\* ..\dotless\current\bin\ -force
     
     Write-host "-----------------------------"
     Write-Host -ForegroundColor Cyan "dotless website was successfully deployed."
