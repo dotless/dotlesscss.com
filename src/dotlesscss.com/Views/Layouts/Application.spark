@@ -35,11 +35,12 @@
 # then add a few variables, mixins and nested rules.
 
 .less (pronounced dot-less)  is a .NET port of the funky [ruby LESS libary](http://lesscss.org/ "LESS css")  
-Lovingly ported by [Christopher Owen], [Erik van Brakel] and [Daniel Hoelbling]
+Lovingly ported by [Christopher Owen], [Erik van Brakel], [Daniel Hoelbling] and [James Foster]
 
 [Christopher Owen]: http://enginechris.wordpress.com/ "Chris Owen"
 [Erik van Brakel]: http://blog.smoothfriction.nl/ "Erik van Brakel"
 [Daniel Hoelbling]: http://www.tigraine.at/ "Daniel Hoelbling"
+[James Foster]: http://github.com/jamesfoster "James Foster"
         </markdown>
       </div> 
       <div class="right">
