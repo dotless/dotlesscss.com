@@ -140,7 +140,7 @@ Now you can configure if you enable Caching and minifying or the Css output
 
 <pre><code>&lt;dotless
 minifyCss="false"
-cacheEnabled="true" /&gt;</code></pre>
+cache="true" /&gt;</code></pre>
 
 ---
 
