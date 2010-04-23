@@ -1,0 +1,163 @@
+img { border: 0; }
+body {
+  padding: 0;
+  margin: 0;
+  font-family: arial;
+}
+hr {
+  height: 1px;
+  background-color: #999999;
+  color: #999999;
+  border: none;
+  padding: 0;
+  margin: 1em 0;
+}
+a { text-decoration: none; }
+h1 {
+  padding: 0;
+  margin: 0;
+  color: #999999;
+  font-family: Impact, arial;
+  font-size: 26px;
+}
+h2 {
+  padding: 0;
+  margin: 0;
+  color: #999999;
+  font-family: Impact, arial;
+  font-size: 24px;
+}
+h3 {
+  padding: 0;
+  margin: 0;
+  color: #999999;
+  font-family: Impact, arial;
+  font-size: 22px;
+  font-family: arial;
+}
+.content_addition .content, #header1 .content, #footer1 .content, #header2 .content, #body1 .content {
+  width: 950px;
+  margin: auto;
+}
+.clearer {
+  clear: both;
+  display: block;
+}
+#header1 {
+  background: #106698;
+  height: 117px;
+  border-bottom: solid 5px #333333;
+}
+#header1 #logo { margin: 20px 0 0 0; }
+#header1 #beta { position: absolute; }
+#header1 ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#header1 ul li {
+  list-style: none;
+  float: right;
+}
+#header1 ul li a {
+  display: block;
+  color: white;
+  background: #2e84b6;
+  font-weight: bold;
+  margin: 20px 5px 0 0;
+  border: solid 2px white;
+  padding: 5px;
+}
+#header1 ul li a:Hover { background: #00487a; }
+#footer1 {
+  background: #106698;
+  height: 117px;
+  border-top: solid 5px #333333;
+  margin: 10px 0 0 0;
+}
+#header2 {
+  height: 127px;
+  background: black;
+  border-bottom: solid 5px #333333;
+}
+#header2 .left {
+  width: 600px;
+  padding: 5px 0 0 0;
+  float: left;
+  display: inline;
+  color: #999999;
+  font-family: Impact, arial;
+}
+#header2 .left p {
+  font-size: 15px;
+  margin: 0;
+  padding: 5px 0 0 0;
+  line-height: 22px;
+}
+#header2 .left a {
+  color: #106698;
+  text-decoration: none;
+}
+#header2 .left a:Hover { border-bottom: dashed 2px #106698; }
+#header2 .right {
+  width: 325px;
+  float: left;
+  display: inline;
+}
+#header2 .right img { margin-top: 10px; }
+#body1 {
+  border-top: solid 5px #b3b3b3;
+  font-family: arial;
+}
+#body1 .sections { font-size: 90%; }
+#body1 .sections h3 { margin-top: 5px; }
+#body1 .sections .section {
+  padding: 0 10px 0 10px;
+  width: 280px;
+  float: left;
+  display: inline;
+}
+#body1 .sections .section > pre {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+#body1 .sections .section pre code { font-weight: bold; }
+#body1 .sections #getting-started {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  text-align: right;
+  border: solid 2px #e6e6e6;
+  background: #ecffff;
+  margin: 5px 0 0 0;
+  padding: 15px;
+}
+#body1 .sections #getting-started h3 {
+  color: #106698;
+  font-size: 18px;
+}
+#body1 pre {
+  background-color: #e6e6e6;
+  border: solid 1px #b3b3b3;
+  color: #106698;
+  display: block;
+  margin: 0;
+  padding: 5px;
+}
+#body1 pre code {
+  font-style: normal;
+  font-weight: normal;
+}
+#body1 pre code span, #documentation pre { color: black; }
+#documentation h1 {
+  font-family: arial;
+  color: black;
+  margin: 15px 0 10px 0;
+}
+#documentation h2 {
+  font-family: arial;
+  color: #2e84b6;
+  margin: 10px 0 5px 0;
+}
+#documentation h3 { font-family: arial; }
