@@ -136,7 +136,7 @@ type="dotless.Core.configuration.
 DotlessConfigurationSectionHandler
 ,dotless.Core" /&gt;</code></pre>
 
-Now you can configure if you enable Caching and minifying or the Css output
+Now you can configure caching and minifying of the Css output
 
 <pre><code>&lt;dotless
 minifyCss="false"
