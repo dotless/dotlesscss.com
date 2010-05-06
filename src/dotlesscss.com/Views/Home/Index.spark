@@ -99,7 +99,7 @@ style sheets shorter.
     </div>
 
     <div class="section">
-      <div  id="getting-started">
+      <div id="getting-started">
         <markdown xml:space="preserve">
 
 ### 1. Download the latest source
@@ -114,16 +114,35 @@ You can find the latest source code for dotless at GitHub and build the project
 
 ---
 
-### 3. Add a new HttpHandler to your Web.Config
+### 3. Add the HttpHandler to your Web.Config
 
 Lets make the dotless processor handle our .LESS files.
 
-Add this entry to the HttpHandlers section of your Web.Config:
+Add the LessCssHttpHandler to your Web.Config:
 
-<pre><code>&lt;add type="
-dotless.Core.LessCssHttpHandler
-,dotless.Core" validate="false"
-path="*.LESS" verb="*" /&gt;</code></pre>
+<pre><code>&lt;system.web&gt;
+  &lt;httpHandlers&gt;
+    &lt;add path="*.less"
+         verb="*"
+         type="
+ dotless.Core.LessCssHttpHandler,
+                  dotless.Core"/&gt;
+         validate="false"
+  &lt;/httpHandlers&gt;
+&lt;/system.web&gt;</code></pre>
+
+If you are deploying to IIS7 you may also need to include the following:
+
+<pre><code>&lt;system.webServer&gt;
+  &lt;handlers&gt;
+    &lt;add name="dotless"
+         path="*.less"
+         verb="*"
+         type="
+ dotless.Core.LessCssHttpHandler,
+                  dotless.Core"/&gt;
+  &lt;/handlers&gt;
+&lt;/system.webServer&gt;</code></pre>
 
 ---
 

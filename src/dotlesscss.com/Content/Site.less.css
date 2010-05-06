@@ -148,8 +148,11 @@ h3 {
       > pre {
         .rounded_corners();
       }
-      pre code {
-        font-weight: bold;
+      pre {
+        text-align: left;
+        code {
+          font-weight: bold;
+        }
       }
     }
     #getting-started {
