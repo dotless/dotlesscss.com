@@ -148,11 +148,8 @@ h3 {
       > pre {
         .rounded_corners();
       }
-      pre {
-        text-align: left;
-        code {
-          font-weight: bold;
-        }
+      pre code {
+        font-weight: bold;
       }
     }
     #getting-started {
@@ -200,4 +197,9 @@ h3 {
   pre {
     color: #000000;
   }
+
+	.reference {  width: 150px; float: left; border: 1px solid #ddd; }
+    .article { 	margin-left: 160px; }
 }
+
+

@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chapter name="Functions" order="150">
+  <description>
+    Functions operate on color by either modifying their values or returning a measurement of one of their dimensions. 
+
+These functions provide a simple mechanism to create a design by specifying one or two base colors and describing other colors by their relationship to the base color. 
+  </description>
+  <topic name="Hue" order="10">
+    <description>Change or measure the hue (type) of a color</description>
+	  <further>When given a number value, Hue 'rotates' a color wheel changing a blue color into green for example. If the number is omitted, then the hue value is measured and returned.
+
+A practical application of hue might be to provide a negative or contrast color to a designs base color by rotating it 90 or 180 degrees.</further>
+<seealso>
+ * Related functions: [Saturation][1], [Lightness][2].
+ * See also [Color Theory][3].
+[1]:/docs/functions/saturation
+[2]:/docs/functions/lightness
+[3]:http://en.wikipedia.org/wiki/Color_theory "Color Theory at Wikipedia"</seealso>
+    <param type="color" order="1" optional="false"/>
+    <param type="number" order="2" optional="true"/>
+    <exampleLess>
+<![CDATA[@base_color: #ffcc00;
+.example1 { background: @base_color; } 
+.example2 { background: hue(@base_color, 30); }
+.example3 { background: hue(@base_color, 120); }
+.example4 { background: hue(@base_color, 180); }
+]]></exampleLess>
+    <exampleBody>
+<![CDATA[<div class="exampleBox example1">Example 1</div>
+<div class="exampleBox example2">Example 2</div>
+<div class="exampleBox example3">Example 3</div>
+<div class="exampleBox example4">Example 4</div>
+]]></exampleBody>
+  </topic>
+
+  <topic name="Saturation" order="20">
+    <description>Change or measure the 'greyness' of a color</description>
+	  <further>When given a number, Saturation will increase or decrease the color's distance to the white point (making it more or less grey). If the number is omitted, the saturation of the color is measured and returned.
+
+Saturatio is useful for 'toning down' a color in a design. Given a bright sharp accent color, you may want to display a greyer version for a large background section.</further>
+<seealso>
+ * Related functions: [Hue][1], [Lightness][2].
+ * See also [Color Theory][3].
+[1]:/docs/functions/hue
+[2]:/docs/functions/lightness
+[3]:http://en.wikipedia.org/wiki/Color_theory "Color Theory at Wikipedia"</seealso>
+	  <param type="color" order="1" optional="false"/>
+	  <param type="number" order="2" optional="true"/>
+	  <exampleLess>
+      <![CDATA[@base_color: #ffcc00;
+a.example1 div { background: Saturation(@base_color, -80); } 
+a.example1:hover div { background: Saturation(@base_color, -50); }
+]]>
+    </exampleLess>
+    <exampleBody>
+      <![CDATA[<a class="example1" href="#"><div class="exampleBox" style="color: #000;">Mouse over me!</div></a>]]>
+    </exampleBody>
+  </topic>
+
+	<topic name="Lightness" order="30">
+		<description>Change or measure brightness of a color</description>
+		<further>When given a number, Lightness increases or decreases the 'brightness' of a color. If the number is omitted, then the lightness of the color is measured and returned.
+
+Lightness is not disimilar to Saturation, except it preserves the underlying color (to an extent). The number value increases or decreases the brightness. 100 produces white and -100 black (or typically 50 and -50). As with saturation, lightness can be used 'tone down' an accent color for a large block or background.
+		</further>
+		<seealso>
+			<![CDATA[  * Related functions: [Hue][1], [Saturation][2].
+  * See also [Color Theory][3].
+  [1]:/docs/functions/hue
+  [2]:/docs/functions/saturation
+  [3]:http://en.wikipedia.org/wiki/Color_theory "Color Theory at Wikipedia" ]]>
+</seealso>
+		<param type="color" order="1" optional="false"/>
+		<param type="number" order="2" optional="true"/>
+		<exampleLess>
+			<![CDATA[@base_color: #25A;
+.baseColor { color: lightness( @base_color, 0); } 
+.example1 { background: lightness( @base_color, 40); color: lightness( @base_color, -20); }
+]]>
+		</exampleLess>
+		<exampleBody>
+			<![CDATA[<div class="exampleBox baseColor">Base Color</div><div class="exampleBox example1">Example Output</div>]]>
+		</exampleBody>
+	</topic>
+
+	<topic name="Red, Green, Blue" order="40">
+		<description>Change or measure the RGB of a color</description>
+		<further>Red, Green and Blue are three functions which each affect their respective section of a colors Red, Green or Blue value.
+
+When given a number, it increases or decreases the Red, Green or Blue of the color and limits the color channel to it's boundaries (0..255). If the number is omitted, then the Red, Green or Blue value is returned.
+
+The color mechanism works using an addative color model. Like with shining lights, given a white light adding a red light has no effect. Unlike mixing paint where adding red and white gives pink.
+		</further>
+<seealso>
+  * See also [Additive color][1].
+  [1]:http://en.wikipedia.org/wiki/Additive_color "Addative color at Wikipedia" 
+</seealso>
+		<param type="color" order="1" optional="false"/>
+		<param type="number" order="2" optional="true"/>
+		<exampleLess>
+			<![CDATA[@base_color: #777777;
+.example1 { background: @base_color; }
+.example2 { background: Red(@base_color, 90); }
+.example3 { background: Green(@base_color, 90); }
+.example4 { background: Blue(@base_color, 90); }
+]]>
+		</exampleLess>
+		<exampleBody>
+			<![CDATA[<div class="exampleBox example1">Original</div><div class="exampleBox example2">More Red</div><div class="exampleBox example3">More Green</div><div class="exampleBox example4">More Blue</div>]]>
+		</exampleBody>
+	</topic>
+
+	<topic name="RGB" order="43">
+		<description>Define color using RGB model</description>
+		<further>Define a color by specifying the amounts of Red, Green and Blue.</further>
+  		<seealso>
+  * Related functions: [HSL][1].
+[1]:/docs/functions/hsl
+		</seealso>
+		<param type="number" order="1" optional="false"/>
+		<param type="number" order="2" optional="false"/>
+		<param type="number" order="3" optional="false"/>
+		<exampleLess>
+			<![CDATA[.example1 { background: rgb( 100%, 0%, 0%); }
+.example2 { background: rgb(80%, 80%, 80%); }
+.example3 { background: rgb(30%, 80%, 30%); }
+.example4 { background: rgb(10, 172, 223); }]]>
+		</exampleLess>
+		<exampleBody>
+			<![CDATA[<div class="exampleBox example1">One</div><div class="exampleBox example2">Two</div><div class="exampleBox example3">Three</div><div class="exampleBox example4">Four</div>]]>
+		</exampleBody>
+	</topic>
+
+
+	<topic name="HSL" order="45">
+		<description>Define color using HSL model</description>
+		<further>Define a color by specifying the Hue, Saturation and Lightness.</further>
+		<seealso>
+   * Related functions: [Hue][1], [Saturation][2], [Lightness][3], [RGB][4].
+[1]:/docs/functions/hue
+[2]:/docs/functions/saturation
+[3]:/docs/functions/lightness
+[4]:/docs/functions/rgb
+		</seealso>
+		<param type="number" order="1" optional="false"/>
+		<param type="number" order="2" optional="false"/>
+		<param type="number" order="3" optional="false"/>
+		<exampleLess>
+			<![CDATA[.example1 { background: hsl( 30, 80%, 70%); }
+.example2 { background: hsl(210, 50%, 50%); }
+.example3 { background: hsl(170, 80%, 30%); }
+.example4 { background: hsl(0, 0%, 70%); }]]>
+		</exampleLess>
+		<exampleBody>
+			<![CDATA[<div class="exampleBox example1">One</div><div class="exampleBox example2">Two</div><div class="exampleBox example3">Three</div><div class="exampleBox example4">Four</div>]]>
+		</exampleBody>
+	</topic>
+
+	<topic name="Complement" order="50">
+		<description>A half turn of the color wheel</description>
+		<further>The complement function performs the same action as Hue given a value of 180.</further>
+<seealso>
+  * Related functions: [Hue][1].
+  * See also [Complementary color][2].
+  [1]:/docs/functions/hue
+  [2]:http://en.wikipedia.org/wiki/Complementary_color "Complementary color at Wikipedia"  
+</seealso>
+		<param type="color" order="1" optional="false"/>
+		<exampleLess>
+			<![CDATA[@base_color: #4AF;
+.example1 { background: @base_color; }
+.example2 { background: complement(@base_color); }
+.example3 { background: hue(@base_color, 180); }
+]]>
+		</exampleLess>
+		<exampleBody>
+			<![CDATA[<div class="exampleBox example1">Original</div><div class="exampleBox example2">Comeplement</div><div class="exampleBox example3">Hue 180</div>]]>
+		</exampleBody>
+	</topic>
+
+	<topic name="Mix" order="90">
+    <description>Mix two colors together. </description>
+    <further>For example, red and yellow gives you orange. You can also specify a weighting for the mix ratio as a percentage for the first color. To make a more yellowy orange, we can specify only 20% of the red is used.</further>
+    <param type="color" order="1" optional="false"/>
+    <param type="color" order="2" optional="false" />
+    <param type="number" order="3" optional="true" />
+    <exampleLess>
+      <![CDATA[@colorRed: #ff0000;
+@colorYellow: #ffff00;      
+.example1 { background: mix(@colorRed, @colorYellow); } 
+.example2 { background: mix(@colorRed, @colorYellow, 20%); } 
+]]>
+    </exampleLess>
+    <exampleBody>
+      <![CDATA[<div class="exampleBox example1">Orange</div> <div class="exampleBox example2">Yellowy!</div>
+]]>
+    </exampleBody>
+  </topic>
+
+
+</chapter>

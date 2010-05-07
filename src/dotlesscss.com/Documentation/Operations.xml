@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chapter name="Operations" order="300">
+  <description>
+    Operations description
+  </description>
+
+	<topic name="Add" order="50">
+		<description>Add numbers</description>
+		<further>Add two numbers together using the + symbol.</further>
+		<param type="number" order="1" optional="false"/>
+		<param type="+" order="2" optional="false"/>
+		<param type="number" order="3" optional="false"/>
+		<exampleLess>
+			<![CDATA[@myborder: 1px;
+.exampleBox { border-color: #25A; border-style: solid; }
+.example1 { border-width: @myborder;  }
+.example2 { border-width: @myborder + 1; }
+]]>
+		</exampleLess>
+		<exampleBody>
+			<![CDATA[<div class="exampleBox example1">Example 1</div><div class="exampleBox example2">Example 2</div>]]>
+		</exampleBody>
+	</topic>
+
+	<topic name="Multiply" order="60">
+		<description>Multiply numbers</description>
+		<further>Multiply two numbers using the * symbol</further>
+		<param type="number" order="1" optional="false"/>
+		<param type="*" order="2" optional="false"/>
+		<param type="number" order="3" optional="false"/>	
+		<exampleLess>
+			<![CDATA[@fontsize: 12pt;
+.example1 { font-size: @fontsize;  }
+.example2 { font-size: @fontsize * 1.1 }
+]]>
+		</exampleLess>
+		<exampleBody>
+			<![CDATA[<div class="exampleBox example1">Example 1</div><div class="exampleBox example2">Example 2</div>]]>
+		</exampleBody>
+	</topic>
+
+
+</chapter>

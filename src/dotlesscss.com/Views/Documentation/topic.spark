@@ -1,0 +1,82 @@
+﻿<div id="header1">
+	<div class="content">
+		<markdown xml:space="preserve">
+* [Documentation][1]
+* [See Source Code][2]
+* [Tweet about .Less][3]
+* [Discuss .Less][4]
+
+[1]: /Docs "Documentation"
+[2]: http://github.com/dotless/dotless "See Source Code"
+[3]: http://twitter.com/home?status={.LESS}%20extends%20CSS%20with%20variables,%20mixins,%20operations%20and%20nested%20rules%20http://www.dotlesscss.com "Tweet about us"
+[4]: http://groups.google.com/group/dotless "Discuss DotLess With Us"
+      </markdown>
+		<img src="~/Content/Images/logo.jpg" alt="dotless - a LESS css port for .NET" id="logo"  />
+		<a href="${ Url.Action('Index', 'Home') }" title="Dotless - is in beta so please bear us through the issues">
+			<img src="~/Content/Images/beta.png" alt="dotless - is in beta so bear us" id="beta"  />
+		</a>
+	</div>
+</div>
+
+<viewdata model="dotlesscss.com.Models.TopicModel"/><use namespace='dotlesscss.com.Documentation'/><use namespace='dotlesscss.com.Models'/><use namespace='System.Collections.Generic'/>
+
+<div id="documentation" class="content">
+
+	<div class="reference">
+		<h3>Reference</h3>
+		<for each="var chapter in ViewData.Model.All">
+			<h4><a href="/docs/${chapter.Name}">${chapter.Name}</a></h4>
+			<for each="var topic in ((IList<Topic>)chapter.Topics)">
+				<div><a href="/docs/${chapter.Name}/${topic.Name}" style="font-size:12px;" title="${topic.Description}">${topic.Name}</a></div>
+			</for>
+		</for>
+	</div>
+
+	<div class="article">  
+		<h2>${ViewData.Model.Name}</h2>
+		<div if="ViewData.Model.Parameters.Count > 0">
+			<i>Usage</i>
+			<span style="background: #ddd; padding: 3px; font-family:monospaced;">
+				<for each="var param in ViewData.Model.Parameters">
+					<i if="param.Optional">[</i>
+					${param.ParamType}&nbsp;
+					<i if="param.Optional">]</i>
+				</for>
+			</span>
+		</div>
+	
+<markdown xml:space="preserve">
+${ViewData.Model.Description}.
+${ViewData.Model.FurtherDescription}
+${ViewData.Model.SeeAlso}
+</markdown>
+
+		<div if="System.String.IsNullOrEmpty(ViewData.Model.ExampleLess)" style="height:400px;">
+		</div>
+		<div if="!System.String.IsNullOrEmpty(ViewData.Model.ExampleLess)">
+		<h4>Example</h4>
+
+		<% using (Html.BeginForm()) { %>
+		<%= Html.TextAreaFor(m => m.ExampleLess, new { rows=5, cols = 80, style="overflow:hidden; border: 1px solid #999;  padding: 3px;"}) %>
+		</br>
+		<input type="submit" value="Update example" /><% } %>
+
+		<h5>Output</h5>
+	
+		<pre>${ViewData.Model.ExampleCss}</pre>
+
+		<h5>Demo</h5>
+
+<!-- Example start -----------------------------------------  -->
+<style type="text/css">
+.exampleBox { float: left; display: block; margin: 4px; padding: 5px; }
+${ViewData.Model.ExampleCss}</style>
+
+${ViewData.Model.ExampleBody}
+<!-- Example end -------------------------------------------- -->
+
+		<div style="clear:both;" />
+		</div>
+	</div>
+</div>
+

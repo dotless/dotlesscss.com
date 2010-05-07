@@ -122,7 +122,6 @@ h3 {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
-#body1 .sections .section pre { text-align: left; }
 #body1 .sections .section pre code { font-weight: bold; }
 #body1 .sections #getting-started {
   -moz-border-radius: 8px;
@@ -162,3 +161,12 @@ h3 {
   margin: 10px 0 5px 0;
 }
 #documentation h3 { font-family: arial; }
+
+#documentation .reference {  width: 100px; float: left; text-align:right;}
+#documentation .reference  a { color: #149;}
+#documentation .reference h3 { margin: 4px 0px 4px 0px; color: #668; font-size: 14pt;}
+#documentation .reference h4 { margin: 7px 0px 4px 0px; }
+#documentation .reference div { margin: 6px 0px 2px 0px;}
+#documentation .reference div  span { color: #335; font-size: 11px;}
+
+#documentation .article { 	margin-left: 123px; }
