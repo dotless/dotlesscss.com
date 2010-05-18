@@ -33,15 +33,15 @@
   <ItemGroup>
     <Reference Include="dotless.Core, Version=1.0.0.5, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\dotless.Core.dll</HintPath>
+      <HintPath>..\..\lib\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="Spark, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Spark.dll</HintPath>
+      <HintPath>..\..\lib\Spark.dll</HintPath>
     </Reference>
     <Reference Include="Spark.Web.Mvc, Version=1.1.0.0, Culture=neutral, PublicKeyToken=7f8549eed921a12c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Spark.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\lib\Spark.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -56,7 +56,8 @@
     </Reference>
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\System.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\lib\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -116,14 +117,9 @@
       <DependentUpon>T4CSS.tt</DependentUpon>
     </Content>
     <Content Include="Default.aspx" />
+    <EmbeddedResource Include="Documentation\Functions.xml" />
     <EmbeddedResource Include="Documentation\Language.xml" />
     <EmbeddedResource Include="Documentation\Operations.xml" />
-    <None Include="Views\Documentation\Chapter.spark" />
-    <None Include="Views\Documentation\topic.spark" />
-    <None Include="Views\Documentation\index.spark">
-      <SubType>ASPXCodeBehind</SubType>
-    </None>
-    <EmbeddedResource Include="Documentation\Functions.xml" />
     <None Include="Content\T4CSS.log">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,6 +129,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4CSS.log</LastGenOutput>
     </None>
+    <None Include="Views\Documentation\Chapter.spark" />
+    <None Include="Views\Documentation\index.spark" />
+    <None Include="Views\Documentation\topic.spark" />
     <None Include="Views\Home\docs.spark" />
     <None Include="Views\Home\Index.spark" />
     <None Include="Views\Layouts\Application.spark" />
