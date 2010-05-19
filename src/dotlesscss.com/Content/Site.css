@@ -68,7 +68,7 @@ h3 {
   border: solid 2px white;
   padding: 5px;
 }
-#header1 ul li a:Hover { background: #00487a; }
+#header1 ul li a:hover { background: #00487a; }
 #footer1 {
   background: #106698;
   height: 117px;
@@ -98,7 +98,7 @@ h3 {
   color: #106698;
   text-decoration: none;
 }
-#header2 .left a:Hover { border-bottom: dashed 2px #106698; }
+#header2 .left a:hover { border-bottom: dashed 2px #106698; }
 #header2 .right {
   width: 325px;
   float: left;
@@ -137,7 +137,7 @@ h3 {
   color: #106698;
   font-size: 18px;
 }
-#body1 pre {
+#body1 pre, #body1 .block {
   background-color: #e6e6e6;
   border: solid 1px #b3b3b3;
   color: #106698;
@@ -145,11 +145,11 @@ h3 {
   margin: 0;
   padding: 5px;
 }
-#body1 pre code {
+#body1 pre code, #body1 .block code {
   font-style: normal;
   font-weight: normal;
 }
-#body1 pre code span, #documentation pre { color: black; }
+#body1 pre code span, #body1 .block code span, #documentation pre { color: black; }
 #documentation h1 {
   font-family: arial;
   color: black;
@@ -161,12 +161,35 @@ h3 {
   margin: 10px 0 5px 0;
 }
 #documentation h3 { font-family: arial; }
-
-#documentation .reference {  width: 100px; float: left; text-align:right;}
-#documentation .reference  a { color: #149;}
-#documentation .reference h3 { margin: 4px 0px 4px 0px; color: #668; font-size: 14pt;}
-#documentation .reference h4 { margin: 7px 0px 4px 0px; }
-#documentation .reference div { margin: 6px 0px 2px 0px;}
-#documentation .reference div  span { color: #335; font-size: 11px;}
-
-#documentation .article { 	margin-left: 123px; }
+#documentation .reference, #documentation .toc {
+  width: 100px;
+  float: left;
+  text-align: right;
+}
+#documentation .reference a, #documentation .toc a { color: #114499; }
+#documentation .reference h3, #documentation .toc h3 {
+  margin: 4px 0 4px 0;
+  color: #666688;
+  font-size: 14pt;
+  margin-left: -100px;
+}
+#documentation .reference h4, #documentation .toc h4 {
+  margin: 7px 0 4px 0;
+  margin-left: -100px;
+}
+#documentation .reference div, #documentation .toc div {
+  margin: 6px 0px 2px 0px;
+  margin-left: -100px;
+}
+#documentation .reference div span, #documentation .toc div span {
+  color: #333355;
+  font-size: 11px;
+}
+#documentation .reference p, #documentation .toc p { margin-left: -100px; }
+#documentation .article { margin-left: 123px; }
+#documentation .article .example .output div {
+  float: left;
+  display: block;
+  margin: 4px;
+  padding: 5px;
+}

@@ -4,40 +4,39 @@ using dotlesscss.com.Documentation;
 
 namespace dotlesscss.com.Models
 {
-    /*
-     *  Should probably use AutoMapper, but it's just as quick to write it like this for now :)
-     */ 
-    public class ChapterModel : Documentation.Chapter
+  /*
+   *  Should probably use AutoMapper, but it's just as quick to write it like this for now :)
+   */
+  public class ChapterModel : Chapter
+  {
+    public ChapterModel(Chapter chapter)
     {
-        public ChapterModel(Documentation.Chapter chapter)
-        {
-            this.Description = chapter.Description;
-            this.Name = chapter.Name;
-            this.SortOrder = chapter.SortOrder;
-            this.Topics = chapter.Topics;
-        }
+      Description = chapter.Description.Trim();
+      Name = chapter.Name.Trim();
+      SortOrder = chapter.SortOrder;
+      Topics = chapter.Topics;
     }
+  }
 
-    public class TopicModel : Documentation.Topic
+  public class TopicModel : Topic
+  {
+    public List<Chapter> All { get; set; }
+    public string ExampleResult { get; set; }
+    public string ExampleCss { get; set; }
+
+    public TopicModel()
+    { }
+
+    public TopicModel(Topic topic)
     {
-    	public List<Chapter> All { get; set;}
-        public string ExampleResult { get; set; }
-        public string ExampleCss { get; set; }
-
-        public TopicModel()
-        { }
-
-        public TopicModel(Documentation.Topic topic)
-        {
-            this.Description = topic.Description;
-            this.FurtherDescription = topic.FurtherDescription;
-        	this.SeeAlso = topic.SeeAlso;
-            this.ExampleBody = topic.ExampleBody;
-            this.ExampleLess = topic.ExampleLess;
-            this.Name = topic.Name;
-            this.SortOrder = topic.SortOrder;
-            this.Parameters = new List<Param>();
-            this.Parameters.AddRange(topic.Parameters);
-        }
+      Description = topic.Description.Trim();
+      FurtherDescription = topic.FurtherDescription.Trim();
+      SeeAlso = topic.SeeAlso;
+      ExampleBody = topic.ExampleBody.Trim();
+      ExampleLess = topic.ExampleLess.Trim();
+      Name = topic.Name.Trim();
+      SortOrder = topic.SortOrder;
+      Parameters = topic.Parameters.Trim();
     }
+  }
 }

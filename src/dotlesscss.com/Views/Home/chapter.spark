@@ -1,0 +1,17 @@
+﻿<div id="documentation" class="content">
+  <viewdata model="Chapter"/>
+
+  <h2>${Model.Name}</h2>
+  <p>${Model.Description}</p>
+
+  <for each="var topic in Model.Topics">
+    <h3>
+      ${ Html.ActionLink(topic.Name, "Docs", "Home", new { chapterName = Model.Name, topicName = topic.Name }, null) }
+    </h3>
+    <pre>${topic.Name.ToLower()}(${topic.Parameters})</pre>
+
+<markdown xml:space="preserve">
+${topic.Description}
+</markdown>
+  </for>
+</div>

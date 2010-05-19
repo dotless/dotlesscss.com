@@ -1,13 +1,41 @@
-﻿
+﻿<viewdata model="List[[Chapter]]"/>
+<use namespace='dotlesscss.com.Documentation'/>
+<use namespace='dotlesscss.com.Models'/>
+<use namespace='System.Collections.Generic'/>
+
 <div id="documentation" class="content">
-  <markdown xml:space="preserve">
 
-Using .less
-===========
+#>// TODO: Use a version of markdown which automatically generates a ToC (like maruku)
 
+  <div class="toc">
+    <markdown xml:space="preserve">
 
-From the command line
----------------------
+#### [Using .less](#using-less)
+[From the command line](#from-the-command-line)  
+[Watching](#watching)  
+[From code](#from-code)  
+
+#### [The Language](#the-language)
+[Variables](#variables)  
+[Mixins](#mixins)  
+[Nested Rules](#nested-rules)  
+[Operators](#operators)  
+[Functions](#functions)  
+[Namespaces &amp; Accessors](#namespaces-accessors)  
+[Scope](#scope)  
+[Comments](#comments)  
+[Importing](#importing)  
+
+    </markdown>
+  </div>
+
+  <div class="article">
+
+    <markdown xml:space="preserve">
+
+<h1 id="using-less">Using .less</h1>
+
+<h2 id="from-the-command-line">From the command line</h2>
 
 The command line tool is `dotless.Compiler.exe`, and it looks something like this:
 
@@ -22,8 +50,7 @@ If you don't specify a destination, `dotless.Compiler` will base it on the sourc
 Are equivalent.
 
 
-Watching
---------
+<h2 id="watching">Watching</h2>
 
 `dotless.Compiler` also comes with an option to watch your `.less` file for any change, and recompile it automatically:
 
@@ -38,8 +65,7 @@ Now, whenever you save your file, `dotless.Compiler` will try to compile it. If 
     Compiling style.less -> style.less.css [Done]
 
 
-From code
----------
+<h2 id="from-code">From code</h2>
 
 Add a reference to dotless.Core.dll
 
@@ -55,12 +81,10 @@ which will output
 
 
 
-The language
-============
+<h1 id="the-language">The language</h1>
 
 
-Variables
----------
+<h2 id="variables">Variables</h2>
 
 These are pretty self-explanatory:
 
@@ -76,8 +100,7 @@ Outputs:
 Note that variables are actually 'constants' in that they can only be defined once.
 
 
-Mixins
-------
+<h2 id="mixins">Mixins</h2>
 
 Mixins are a way of including ('mixing in') a bunch of properties from one rule-set into another rule-set. So say we have the following class:
 
@@ -101,8 +124,7 @@ And we want to use these properties inside other rule-sets. Well, we just have t
 The properties of the `.bordered` class will now appear in both `#menu a` and `.post a`. (Note that you can also use `#id`s as mixins)
 
 
-Nested Rules
-------------
+<h2 id="nested-rules">Nested Rules</h2>
 
 .LESS gives you the ability to use nesting instead of, or in combination with cascading. Lets say we have the following CSS:
 
@@ -134,8 +156,7 @@ In .LESS, we can also write it this way:
 The resulting code is more concise, and mimics the structure of your `html`.
 
 
-Operators
----------
+<h2 id="operators">Operators</h2>
 
 Any number, color or variable can be operated on. Here are a couple of examples:
 
@@ -154,8 +175,7 @@ The output is pretty much what you expect—.LESS understands the difference bet
 .LESS will use that unit for the final output—`6px` in this case.
 
 
-Functions
----------
+<h2 id="functions">Functions</h2>
 
 .LESS defines some useful functions which are called using the normal CSS function syntax
 
@@ -169,11 +189,10 @@ Is compiled to
       color: #ff0000;
     }
 
-See the [function reference](${ Url.Action("functions", "Home") }) for a full list of available functions.
+See the [function reference](${ Url.Action("Docs", "Home", new { chapterName = "functions" }) }) for a full list of available functions.
 
 
-Namespaces &amp; Accessors
---------------------------
+<h2 id="namespaces-accessors">Namespaces &amp; Accessors</h2>
 
 Sometimes, you may want to group your variables or mixins, for organizational purposes, or just to offer some encapsulation. 
 You can do this pretty intuitively in .LESS—say you want to bundle some mixins and variables under `#bundle`, for later re-use, or for distributing:
@@ -214,8 +233,7 @@ Variables and accessors can be used almost interchangeably, use whichever is bes
 might make more sense if that property only needs to be accessed once.
 
 
-Scope
------
+<h2 id="scope">Scope</h2>
 
 Scope in .LESS is very similar to that of programming languages. Variables and mixins are first looked for locally, 
 and if they aren't found, the compiler will look in the parent scope, and so on. Note that the order of declaration does matter.
@@ -230,8 +248,7 @@ and if they aren't found, the compiler will look in the parent scope, and so on.
     }
 
 
-Comments
---------
+<h2 id="comments">Comments</h2>
 
 Both C-style and inline comments are authorized:
 
@@ -242,13 +259,13 @@ Both C-style and inline comments are authorized:
     @var: white;
 
 
-Importing
----------
+<h2 id="importing">Importing</h2>
 
 Importing works pretty much as expected. You can import a `.less` file, and all the variables in it will be available. If the file is a `.less`, the extension is optional:
 
     @import "library";
     @import "typo.css";
 
-  </markdown>
+    </markdown>
+  </div>
 </div>

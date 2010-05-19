@@ -10,6 +10,25 @@
 </head>
 <body>
   <div id="body1">
+    <div id="header1">
+      <div class="content">
+        <markdown xml:space="preserve">
+* [Documentation][1]
+* [See Source Code][2]
+* [Tweet about .Less][3]
+* [Discuss .Less][4]
+
+[1]: ${ Url.Action( "Docs", "Home", new { chapterName = "", topicName = "" } ) } "Documentation"
+[2]: http://github.com/dotless/dotless "See Source Code"
+[3]: http://twitter.com/home?status={.LESS}%20extends%20CSS%20with%20variables,%20mixins,%20operations%20and%20nested%20rules%20http://www.dotlesscss.com "Tweet about us"
+[4]: http://groups.google.com/group/dotless "Discuss DotLess With Us"
+          </markdown>
+        <img src="~/Content/Images/logo.jpg" alt="dotless - a LESS css port for .NET" id="logo"  />
+        <a href="${ Url.Action('Index', 'Home') }" title="Dotless - is in beta so please bear us through the issues">
+          <img src="~/Content/Images/beta.png" alt="dotless - is in beta so bear us" id="beta"  />
+        </a>
+      </div>
+    </div>
     <use content="view"/>
   </div>
   <div id="footer1">

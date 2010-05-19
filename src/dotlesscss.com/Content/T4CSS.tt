@@ -61,9 +61,9 @@ foreach(var cssFile in cssFiles)
     try
     {
 
-	 
-		var fs = new FileSource();
-		var lso = fs.GetSource(cssFile);
+   
+    var fs = new FileSource();
+    var lso = fs.GetSource(cssFile);
         string css = dotLess.TransformToCss(lso);
         Write(css);
     }
@@ -77,8 +77,8 @@ manager.Process(true);
 
 if(_runOnBuild)
 {
-	//Mark the t4 template as unsaved so it will run on every build
-	MarkDirty();
+  //Mark the t4 template as unsaved so it will run on every build
+  MarkDirty();
 }
 #>
 
@@ -92,11 +92,11 @@ bool _minimize, _runOnBuild, _useCssExtension;
 void MarkDirty() {
     // Get the DTE service from the host
     var serviceProvider = Host as IServiceProvider;
-	EnvDTE.DTE dte;
+  EnvDTE.DTE dte;
     if (serviceProvider == null)
         return;
 
-	dte = serviceProvider.GetService(typeof(SDTE)) as DTE;
+  dte = serviceProvider.GetService(typeof(SDTE)) as DTE;
 
     // Find the .tt file's ProjectItem
     ProjectItem projectItem = dte.Solution.FindProjectItem(Host.TemplateFile);
@@ -308,7 +308,7 @@ class Manager
 */
 
 public string GetCssFileName(string dotLessFileName) {
-	return (_useCssExtension) ? Path.GetFileNameWithoutExtension(dotLessFileName.Replace(".less","")) + ".css"
-							  : Path.GetFileNameWithoutExtension(dotLessFileName) + ".css";
+  return (_useCssExtension) ? Path.GetFileNameWithoutExtension(dotLessFileName.Replace(".less","")) + ".css"
+                : Path.GetFileNameWithoutExtension(dotLessFileName) + ".css";
 }
 #>

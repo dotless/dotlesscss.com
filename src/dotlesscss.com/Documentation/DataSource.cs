@@ -9,102 +9,88 @@ using System.Xml.Serialization;
 
 namespace dotlesscss.com.Documentation
 {
-    [XmlRoot("chapter")]
-    public class Chapter
+  [XmlRoot("chapter")]
+  public class Chapter
+  {
+    [XmlAttribute("name")]
+    public string Name { get; set; }
+
+    [XmlAttribute("order")]
+    public int SortOrder { get; set; }
+
+    [XmlElement("description")]
+    public string Description { get; set; }
+
+    [XmlElement(Type = typeof(Topic), ElementName = "topic")]
+    public List<Topic> Topics;
+  }
+
+  public class Topic
+  {
+    [XmlAttribute("name")]
+    public string Name { get; set; }
+
+    [XmlAttribute("order")]
+    public int SortOrder { get; set; }
+
+    [XmlElement("params")]
+    public string Parameters;
+
+    [XmlElement("description")]
+    public string Description { get; set; }
+
+    [XmlElement("further")]
+    public string FurtherDescription { get; set; }
+
+    [XmlElement("seealso")]
+    public string SeeAlso { get; set; }
+
+    [XmlElement("exampleLess")]
+    public string ExampleLess { get; set; }
+
+    [XmlElement("exampleBody")]
+    public string ExampleBody { get; set; }
+  }
+
+  public class DataSource
+  {
+    public static List<Chapter> Chapters { get; private set; }
+
+    static DataSource()
     {
-        [XmlAttribute("name")]
-        public string Name { get; set; }
-
-        [XmlAttribute("order")]
-        public int SortOrder { get; set; }
-
-        [XmlElement("description")]
-        public string Description { get; set; }
-
-        [XmlElement(Type = typeof(Topic), ElementName = "topic")]
-        public List<Topic> Topics;
+      LoadChaptersByReflection();
     }
 
-    public class Topic
+    public static void LoadChaptersByReflection()
     {
-        [XmlAttribute("name")]
-        public string Name { get; set; }
+      Assembly asm = Assembly.GetExecutingAssembly();
+      Chapters = new List<Chapter>();
 
-        [XmlAttribute("order")]
-        public int SortOrder { get; set; }
+      foreach (string resourceName in Assembly.GetExecutingAssembly().GetManifestResourceNames())
+      {
+        if (!Regex.IsMatch(resourceName, @"Documentation.*\.xml$", RegexOptions.IgnoreCase))
+          continue;
 
-        [XmlElement(Type = typeof (Param), ElementName = "param")] 
-        public List<Param> Parameters;
+        XmlSerializer ser = new XmlSerializer(typeof(Chapter));
+        Chapters.Add((Chapter)ser.Deserialize(asm.GetManifestResourceStream(resourceName)));
+      }
 
-        [XmlElement("description")]
-        public string Description { get; set; }
-
-		[XmlElement("further")]
-		public string FurtherDescription { get; set; }
-
-		[XmlElement("seealso")]
-		public string SeeAlso { get; set; }
-
-        [XmlElement("exampleLess")]
-        public string ExampleLess { get; set; }
-
-        [XmlElement("exampleBody")]
-        public string ExampleBody { get; set; }
+      Chapters.Sort((x, y) => x.SortOrder - y.SortOrder);
+      Chapters.ForEach(chapter => chapter.Topics.Sort((x, y) => x.SortOrder - y.SortOrder));
     }
 
-    [XmlRoot("param")]
-    public class Param
+    public static Chapter FindChapter(string chapterName)
     {
-        [XmlAttribute("type")] 
-        public string ParamType;
-
-        [XmlAttribute("order")]
-        public int SortOrder;
-
-        [XmlAttribute("optional")]
-        public bool Optional = true;
+      return string.IsNullOrEmpty(chapterName)
+          ? null
+          : Chapters.FirstOrDefault(chapter => string.Compare(chapter.Name, chapterName, StringComparison.OrdinalIgnoreCase) == 0);
     }
 
-    public class DataSource
+    public static Topic FindTopic(Chapter chapter, string topicName)
     {
-        public static List<Chapter> Chapters { get; private set; }
-
-        static DataSource()
-        {
-            LoadChaptersByReflection();
-        }
-
-        public static void LoadChaptersByReflection()
-        {
-            Assembly asm = Assembly.GetExecutingAssembly();
-            Chapters = new List<Chapter>();
-
-            foreach (string resourceName in Assembly.GetExecutingAssembly().GetManifestResourceNames())
-            {
-                if (!Regex.IsMatch(resourceName, @"Documentation.*\.xml$", RegexOptions.IgnoreCase))
-                    continue;
-
-                XmlSerializer ser = new XmlSerializer(typeof(Chapter));
-                Chapters.Add((Chapter)ser.Deserialize(asm.GetManifestResourceStream(resourceName)));
-            }
-
-            Chapters.Sort((x, y) => x.SortOrder - y.SortOrder);
-            Chapters.ForEach(chapter => chapter.Topics.Sort((x, y) => x.SortOrder - y.SortOrder));
-            Chapters.ForEach(chapter => chapter.Topics.ForEach(topic => topic.Parameters.Sort((x, y) => x.SortOrder - y.SortOrder)));
-        }
-
-        public static Chapter FindChapter(string chapterName)
-        {
-            return string.IsNullOrEmpty(chapterName) 
-                ? null 
-                : Chapters.FirstOrDefault(chapter => string.Compare(chapter.Name, chapterName, StringComparison.OrdinalIgnoreCase) == 0);
-        }
-
-        public static Topic FindTopic(Chapter chapter, string topicName)
-        {
-            return string.IsNullOrEmpty(topicName) 
-                ? null 
-                : chapter.Topics.FirstOrDefault(topic => string.Compare(topic.Name, topicName, StringComparison.OrdinalIgnoreCase) == 0);
-        }
+      return string.IsNullOrEmpty(topicName)
+          ? null
+          : chapter.Topics.FirstOrDefault(topic => string.Compare(topic.Name, topicName, StringComparison.OrdinalIgnoreCase) == 0);
     }
+  }
 }

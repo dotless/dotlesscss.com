@@ -73,7 +73,6 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DocumentationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -116,11 +115,9 @@
       <DependentUpon>T4CSS.tt</DependentUpon>
     </Content>
     <Content Include="Default.aspx" />
-    <EmbeddedResource Include="Documentation\Language.xml" />
-    <EmbeddedResource Include="Documentation\Operations.xml" />
-    <None Include="Views\Documentation\Chapter.spark" />
-    <None Include="Views\Documentation\topic.spark" />
-    <None Include="Views\Documentation\index.spark">
+    <None Include="Views\Home\chapter.spark" />
+    <None Include="Views\Home\topic.spark" />
+    <None Include="Views\Home\docs.spark">
       <SubType>ASPXCodeBehind</SubType>
     </None>
     <EmbeddedResource Include="Documentation\Functions.xml" />
@@ -133,8 +130,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4CSS.log</LastGenOutput>
     </None>
-    <None Include="Views\Home\docs.spark" />
-    <None Include="Views\Home\Index.spark" />
+    <None Include="Views\Home\index.spark" />
     <None Include="Views\Layouts\Application.spark" />
     <None Include="Views\Shared\_global.spark" />
   </ItemGroup>

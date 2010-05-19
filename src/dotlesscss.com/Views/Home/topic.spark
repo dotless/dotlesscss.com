@@ -1,0 +1,58 @@
+﻿
+<div id="documentation" class="content">
+<viewdata model="dotlesscss.com.Models.TopicModel"/>
+
+  <div class="reference">
+    <for each="var chapter in Model.All">
+      <h4>${chapter.Name}</h4>
+      <for each="var topic in chapter.Topics">
+        <div>
+          ${ Html.ActionLink(topic.Name, "Docs", "Home", new { chapterName = chapter.Name, topicName = topic.Name }, null) }
+        </div>
+      </for>
+    </for>
+  </div>
+
+  <div class="article">  
+    <h2>${Model.Name}</h2>
+    <pre>${Model.Name.ToLower()}(${Model.Parameters})</pre>
+
+    <markdown xml:space="preserve">
+${Model.Description}.
+${Model.FurtherDescription}
+${Model.SeeAlso}
+    </markdown>
+
+    <div if="!string.IsNullOrEmpty(Model.ExampleLess)">
+      <h4>Example</h4>
+
+      #> Html.BeginForm();
+        ${ Html.TextAreaFor(m => m.ExampleLess, new { rows = 5, cols = 80, style = "border: 1px solid #999; padding: 3px;"}) }
+        <br/>
+        <input type="submit" value="Update example" />
+      #> Html.EndForm();
+
+      <h5>Output</h5>
+    
+      <pre>${Model.ExampleCss}</pre>
+
+      <h5>Demo</h5>
+
+      <div class="example">
+        #>// TODO: show html and output divs side by side
+        <div class="html">
+          <pre>${ Html.Encode(Model.ExampleBody) }</pre>
+        </div>
+        <div class="output">
+          <content name="head">
+            <style type="text/css">
+              ${Model.ExampleCss}
+            </style>
+          </content>
+          ${Model.ExampleBody}
+        </div>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+</div>

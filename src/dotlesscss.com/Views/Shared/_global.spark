@@ -1,4 +1,6 @@
 ﻿<use namespace="System.Collections.Generic"/>
 <use namespace="System.Web.Mvc.Html"/>
- 
+<use namespace='dotlesscss.com.Documentation'/>
+<use namespace='dotlesscss.com.Models'/>
+
 <global type="string" Title="'Less Css for .NET'"/>

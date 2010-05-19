@@ -74,7 +74,7 @@ h3 {
         padding: 5px;
       }
       
-      a:Hover { background: #00487a; }
+      a:hover { background: #00487a; }
     }
   }
 }
@@ -117,7 +117,7 @@ h3 {
       color: #106698;
       text-decoration: none;
     }
-    a:Hover { border-bottom: dashed 2px #106698; }
+    a:hover { border-bottom: dashed 2px #106698; }
   }
   .right {
     width: 325px;
@@ -165,7 +165,7 @@ h3 {
       }
     }
   }
-  pre {
+  pre, .block {
     background-color: #e6e6e6;
     border: solid 1px #b3b3b3;
     color: #106698;
@@ -198,8 +198,37 @@ h3 {
     color: #000000;
   }
 
-	.reference {  width: 150px; float: left; border: 1px solid #ddd; }
-    .article { 	margin-left: 160px; }
+  .reference, .toc {
+    width: 100px; 
+    float: left; 
+    text-align: right;
+    a { color: #149; }
+    h3 {
+      margin: 4px 0 4px 0; 
+      color: #668; 
+      font-size: 14pt;
+    }
+    h4 { margin: 7px 0 4px 0; }
+    div {
+      margin: 6px 0px 2px 0px;
+      span {
+        color: #335; 
+        font-size: 11px;
+      }
+    }
+    p, h3, h4, div { margin-left: -100px; }
+  }  
+
+  .article {
+    margin-left: 123px;
+    
+    .example .output div {
+      float: left; 
+      display: block; 
+      margin: 4px; 
+      padding: 5px; 
+    }
+  }
 }
 
 
