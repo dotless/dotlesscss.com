@@ -102,26 +102,29 @@ Note that variables are actually 'constants' in that they can only be defined on
 
 <h2 id="mixins">Mixins</h2>
 
-Mixins are a way of including ('mixing in') a bunch of properties from one rule-set into another rule-set. So say we have the following class:
+Mixins are a way of including ('mixing in') a bunch of properties from one rule-set into another rule-set. So say we have the following mixin:
 
-    .bordered {
-      border-top: dotted 1px black;
-      border-bottom: solid 2px black;
+    .rounded_corners(@radius: 5px) {
+      -moz-border-radius: @radius;
+      -webkit-border-radius: @radius;
+      border-radius: @radius;
     }
 
-And we want to use these properties inside other rule-sets. Well, we just have to drop in the name of the class where we want the properties, like so:
+And we want to use these properties inside other rule-sets. We just have to specify the name of the mixin where we want the properties to go, passing any parameters, like so:
 
     #menu a {
       color: #111;
-      .bordered;
+      .rounded_corners;
     }
 
     .post a {
       color: red;
-      .bordered;
+      .rounded_corners(10px);
     }
 
-The properties of the `.bordered` class will now appear in both `#menu a` and `.post a`. (Note that you can also use `#id`s as mixins)
+`#menu a` will now have rounded corners with a 5px radius and `.post a` with a 10px radius.
+
+You can also use normal classes like a mixin with no arguments just by using its name (as in `#menu a` above)
 
 
 <h2 id="nested-rules">Nested Rules</h2>
