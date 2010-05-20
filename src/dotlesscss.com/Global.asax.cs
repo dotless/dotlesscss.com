@@ -14,16 +14,16 @@ namespace dotlesscss.com
       routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
       routes.MapRoute(
-        "Root",
+        "root",
         "", new { controller = "Home", action = "Index" });
 
       routes.MapRoute(
-        "Documentation",
+        "docs",
         "docs.aspx/{chapterName}/{topicName}",
-        new { controller = "Home", action = "Docs", chapterName = UrlParameter.Optional, topicName = UrlParameter.Optional });
+        new { controller = "Home", action = "Reference", topicName = UrlParameter.Optional });
 
       routes.MapRoute(
-        "Default",
+        "default",
         "{action}.aspx", new { controller = "Home", action = "Index" });
     }
 

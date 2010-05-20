@@ -1,0 +1,47 @@
+﻿<div id="tryit">
+
+  <viewdata less="string" />
+  <viewdata css="string" />
+  <viewdata html="string" />
+
+  <set Title="'Online .LESS Parser - Less Css for .NET'" />
+
+  <content name="head">
+    <style type="text/css">
+      ${ css }
+    </style>
+  </content>
+
+  #> Html.BeginForm();
+
+  <h3>Online .LESS Parser</h3>
+
+  <div id="input">
+    <h4>Less</h4>
+    ${ Html.TextArea( "less" ) }
+  </div>
+
+  <div id="output">
+    <h4>Output</h4>
+    <pre>${ css }</pre>
+  </div>
+
+  <div class="clearer"></div>
+
+  <div id="html">
+    <h4>HTML</h4>
+    ${ Html.TextArea( "html" ) }
+  </div>
+
+  <div id="demo">
+    <h4>Result</h4>
+    ${ html }
+  </div>
+
+  <div class="clearer"></div>
+
+  <input type="submit" value="Update"></input>
+
+  #> Html.EndForm();
+
+</div>

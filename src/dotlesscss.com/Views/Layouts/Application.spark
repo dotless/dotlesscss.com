@@ -18,7 +18,7 @@
 * [Tweet about .Less][3]
 * [Discuss .Less][4]
 
-[1]: ${ Url.Action( "Docs", "Home", new { chapterName = "", topicName = "" } ) } "Documentation"
+[1]: ${ Url.RouteUrl( "default", new { action = "docs" } ) } "Documentation"
 [2]: http://github.com/dotless/dotless "See Source Code"
 [3]: http://twitter.com/home?status={.LESS}%20extends%20CSS%20with%20variables,%20mixins,%20operations%20and%20nested%20rules%20http://www.dotlesscss.com "Tweet about us"
 [4]: http://groups.google.com/group/dotless "Discuss DotLess With Us"
@@ -32,8 +32,6 @@
     <use content="view"/>
   </div>
   <div id="footer1">
-    <div class="content">
-    </div>
   </div>
 
   <script type="text/javascript">

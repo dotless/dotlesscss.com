@@ -10,37 +10,43 @@ using dotlesscss.com.Models;
 
 namespace dotlesscss.com.Controllers
 {
-  [OutputCache(Duration = 86400, VaryByParam="None")]
   public class HomeController : Controller
   {
+    [OutputCache(Duration = 86400, VaryByParam="None")]
     public ActionResult Index()
     {
       return View();
     }
 
-    public ActionResult Docs(string chapterName, string topicName)
+    [OutputCache(Duration = 86400, VaryByParam = "None")]
+    public ActionResult Docs()
     {
-      return Docs(null, chapterName, topicName);
+      return View("Docs", ChapterModel.FromChaperList(DataSource.Chapters));
+    }
+
+    public ActionResult Reference(string chapterName, string topicName)
+    {
+      return Reference(null, chapterName, topicName);
     }
 
     [HttpPost]
-    public ActionResult Docs(TopicModel model, string chapterName, string topicName)
+    public ActionResult Reference(TopicModel model, string chapterName, string topicName)
     {
       // Show all Chapters ------------------------------------------------------------
-      Chapter chapter = DataSource.FindChapter(chapterName);
+      var chapter = DataSource.FindChapter(chapterName);
       if (chapter == null)
-        return View("Docs", DataSource.Chapters);
+        return View("Docs", ChapterModel.FromChaperList(DataSource.Chapters));
 
       // Show all Topics for Chapter --------------------------------------------------
-      Topic topic = DataSource.FindTopic(chapter, topicName);
+      var topic = DataSource.FindTopic(chapter, topicName);
       if (topic == null)
         return View("Chapter", new ChapterModel(chapter));
 
       // Show Topics details ----------------------------------------------------------
-      TopicModel topicModel = new TopicModel(topic) { All = DataSource.Chapters };
+      var topicModel = new TopicModel(topic) { All = ChapterModel.FromChaperList(DataSource.Chapters) };
 
       if (model != null)
-        topicModel.ExampleLess = model.ExampleLess;
+        topicModel.ExampleLess = model.ExampleLess.Trim();
 
       try
       {
@@ -52,6 +58,42 @@ namespace dotlesscss.com.Controllers
       }
 
       return View("Topic", topicModel);
+    }
+
+    public ActionResult TryIt()
+    {
+      var defaultHtml = @"
+<div id=""example1"">Mouse over me!</div>
+<div id=""example2"">Mouse over me!</div>
+<div id=""example3"">Mouse over me!</div>
+";
+      var defaultLess = @"
+@base_color: #cc8844;
+#example1 {
+  background: @base_color;
+  :hover { background: saturation(@base_color, 50%); }
+}
+#example2 {
+  background: @base_color;
+  :hover { background: lightness(@base_color, 30%); }
+}
+#example3 {
+  background: @base_color;
+  :hover { background: hue(@base_color, -70); }
+}
+";
+      return TryIt(defaultHtml, defaultLess);
+    }
+
+    [HttpPost]
+    [ValidateInput(false)]
+    public ActionResult TryIt(string html, string less)
+    {
+      ViewData["less"] = less.Trim();
+      ViewData["css"] = ProcessLess(less);
+      ViewData["html"] = html.Trim();
+
+      return View();
     }
 
     public string ProcessLess(string less)

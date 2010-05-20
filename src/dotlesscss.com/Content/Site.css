@@ -35,7 +35,7 @@ h3 {
   font-size: 22px;
   font-family: arial;
 }
-.content_addition .content, #header1 .content, #footer1 .content, #header2 .content, #body1 .content {
+.content_addition .content, #header1 .content, #header2 .content, #body1 .content {
   width: 950px;
   margin: auto;
 }
@@ -69,12 +69,7 @@ h3 {
   padding: 5px;
 }
 #header1 ul li a:hover { background: #00487a; }
-#footer1 {
-  background: #106698;
-  height: 117px;
-  border-top: solid 5px #333333;
-  margin: 10px 0 0 0;
-}
+#footer1 { height: 80px; }
 #header2 {
   height: 127px;
   background: black;
@@ -161,35 +156,83 @@ h3 {
   margin: 10px 0 5px 0;
 }
 #documentation h3 { font-family: arial; }
-#documentation .reference, #documentation .toc {
+#documentation #reference, #documentation #toc {
   width: 100px;
   float: left;
   text-align: right;
 }
-#documentation .reference a, #documentation .toc a { color: #114499; }
-#documentation .reference h3, #documentation .toc h3 {
+#documentation #reference a, #documentation #toc a { color: #114499; }
+#documentation #reference h3, #documentation #toc h3 {
   margin: 4px 0 4px 0;
   color: #666688;
   font-size: 14pt;
   margin-left: -100px;
 }
-#documentation .reference h4, #documentation .toc h4 {
+#documentation #reference h4, #documentation #toc h4 {
   margin: 7px 0 4px 0;
   margin-left: -100px;
 }
-#documentation .reference div, #documentation .toc div {
-  margin: 6px 0px 2px 0px;
+#documentation #reference div, #documentation #toc div {
+  margin-top: 2px;
   margin-left: -100px;
 }
-#documentation .reference div span, #documentation .toc div span {
+#documentation #reference div span, #documentation #toc div span {
   color: #333355;
   font-size: 11px;
 }
-#documentation .reference p, #documentation .toc p { margin-left: -100px; }
-#documentation .article { margin-left: 123px; }
-#documentation .article .example .output div {
+#documentation #reference p, #documentation #toc p { margin-left: -100px; }
+#documentation #article {
+  font-size: 90%;
+  margin-left: 123px;
+}
+#documentation #article h4, #tryit h4 { margin-bottom: 5px; }
+#documentation #article #example #input textarea {
+  border: 1px solid #999999;
+  padding: 3px;
+  width: 100%;
+}
+#documentation #article #example #demo > div, #tryit #demo > div {
   float: left;
   display: block;
-  margin: 4px;
+  margin: 0 4px 4px 4px;
   padding: 5px;
+}
+#documentation #article #example .left {
+  float: left;
+  width: 54%;
+}
+#documentation #article #example .right {
+  float: left;
+  width: 44%;
+  margin-left: 2%;
+}
+#tryit {
+  width: 950px;
+  margin: 0 auto;
+}
+#tryit h3 { margin-top: 15px; }
+#tryit #input, #tryit #html {
+  float: left;
+  width: 49%;
+  height: 30%;
+  margin: 0;
+}
+#tryit #input textarea {
+  border: 1px solid #999999;
+  padding: 3px;
+  width: 100%;
+  height: 300px;
+}
+#tryit #html textarea {
+  border: 1px solid #999999;
+  padding: 3px;
+  width: 100%;
+  height: 100px;
+}
+#tryit #output, #tryit #demo {
+  float: left;
+  width: 49%;
+  height: 30%;
+  margin: 0;
+  margin-left: 2%;
 }

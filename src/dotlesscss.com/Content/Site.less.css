@@ -80,15 +80,7 @@ h3 {
 }
 
 #footer1 {
-  background: #106698;
-  height: 117px;
-  border-top: solid 5px #333333;
-  margin: 10px 0 0 0;
-
-  .content {
-    width: 950px;
-    margin: auto;
-  }
+  height: 80px;
 }
 
 #header2 {
@@ -198,7 +190,7 @@ h3 {
     color: #000000;
   }
 
-  .reference, .toc {
+  #reference, #toc {
     width: 100px; 
     float: left; 
     text-align: right;
@@ -210,7 +202,7 @@ h3 {
     }
     h4 { margin: 7px 0 4px 0; }
     div {
-      margin: 6px 0px 2px 0px;
+      margin-top: 2px;
       span {
         color: #335; 
         font-size: 11px;
@@ -219,16 +211,73 @@ h3 {
     p, h3, h4, div { margin-left: -100px; }
   }  
 
-  .article {
+  #article {
+    font-size: 90%;
     margin-left: 123px;
     
-    .example .output div {
-      float: left; 
-      display: block; 
-      margin: 4px; 
-      padding: 5px; 
+    h4 { margin-bottom: 5px; }
+
+    #example {
+      #input {
+        textarea {
+          border: 1px solid #999; 
+          padding: 3px;
+          width: 100%;
+        }
+      }
+      #demo > div {
+        float: left; 
+        display: block; 
+        margin: 0 4px 4px 4px; 
+        padding: 5px; 
+      }
+      
+      .left {
+        float: left;
+        width: 54%;
+      }
+      .right {
+        float: left;
+        width: 44%;
+        margin-left: 2%;
+      }
     }
   }
 }
 
-
+#tryit {
+  width: 950px;
+  margin: 0 auto;
+  
+  h3 { margin-top: 15px; }
+  h4 { margin-bottom: 5px; }
+  
+  #input, #html {
+    float: left;
+    width: 49%;
+    height: 30%;
+    margin: 0;
+    
+    textarea {
+      border: 1px solid #999; 
+      padding: 3px;
+      width: 100%;
+    }
+  }
+  #input textarea { height: 300px; }
+  #html textarea { height: 100px; }
+  #output, #demo {
+    float: left;
+    width: 49%;
+    height: 30%;
+    margin: 0;
+    margin-left: 2%;
+  }
+  
+  #demo > div {
+    float: left; 
+    display: block; 
+    margin: 0 4px 4px 4px; 
+    padding: 5px; 
+  }
+}

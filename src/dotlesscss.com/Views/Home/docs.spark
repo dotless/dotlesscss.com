@@ -1,4 +1,4 @@
-﻿<viewdata model="List[[Chapter]]"/>
+﻿<viewdata model="List[[ChapterModel]]"/>
 <use namespace='dotlesscss.com.Documentation'/>
 <use namespace='dotlesscss.com.Models'/>
 <use namespace='System.Collections.Generic'/>
@@ -7,7 +7,7 @@
 
 #>// TODO: Use a version of markdown which automatically generates a ToC (like maruku)
 
-  <div class="toc">
+  <div id="toc">
     <markdown xml:space="preserve">
 
 #### [Using .less](#using-less)
@@ -29,7 +29,7 @@
     </markdown>
   </div>
 
-  <div class="article">
+  <div id="article">
 
     <markdown xml:space="preserve">
 
@@ -192,7 +192,7 @@ Is compiled to
       color: #ff0000;
     }
 
-See the [function reference](${ Url.Action("Docs", "Home", new { chapterName = "functions" }) }) for a full list of available functions.
+See the [function reference](${ Url.RouteUrl("docs", new { chapterName = "functions" }) }) for a full list of available functions.
 
 
 <h2 id="namespaces-accessors">Namespaces &amp; Accessors</h2>

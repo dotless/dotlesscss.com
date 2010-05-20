@@ -1,22 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <chapter name="Functions" order="150" xml:space="preserve">
-  <description>
-    Functions operate on color by either modifying their values or returning a measurement of one of their dimensions. 
+  <topic name="hue">
+    <description>
+      Returns or modifies the hue of a color
+    </description>
+    <further>
+#### Parameters
 
-These functions provide a simple mechanism to create a design by specifying one or two base colors and describing other colors by their relationship to the base color. 
-  </description>
-  <topic name="Hue" order="10">
-    <description>Change or measure the hue (type) of a color</description>
-    <further>When given a number value, Hue 'rotates' a color wheel changing a blue color into green for example. If the number is omitted, then the hue value is measured and returned.
+ * `color`
+ * `amount` - **(optional)** Should be between -360 and 360 inclusive. 
 
-A practical application of hue might be to provide a negative or contrast color to a designs base color by rotating it 90 or 180 degrees.</further>
-<seealso>
- * Related functions: [Saturation][1], [Lightness][2].
- * See also [Color Theory][3].
-[1]:/docs.aspx/functions/saturation
-[2]:/docs.aspx/functions/lightness
-[3]:http://en.wikipedia.org/wiki/Color_theory "Color Theory at Wikipedia"</seealso>
-    <params>color, [number]</params>
+When `amount` is specified, returns a new color with the hue component modified by that amount. Otherwise returns the hue component of the specified color in degrees.
+    </further>
+    <params>color, [amount]</params>
     <exampleLess>
 <![CDATA[
 @base_color: #ffcc00;
@@ -24,124 +20,257 @@ A practical application of hue might be to provide a negative or contrast color 
 .example2 { background: hue(@base_color, 30); }
 .example3 { background: hue(@base_color, 120); }
 .example4 { background: hue(@base_color, 180); }
-]]></exampleLess>
+]]>
+    </exampleLess>
     <exampleBody>
 <![CDATA[
 <div class="example1">Example 1</div>
 <div class="example2">Example 2</div>
 <div class="example3">Example 3</div>
 <div class="example4">Example 4</div>
-]]></exampleBody>
-  </topic>
-
-  <topic name="Saturation" order="20">
-    <description>Change or measure the 'greyness' of a color</description>
-    <further>When given a number, Saturation will increase or decrease the color's distance to the white point (making it more or less grey). If the number is omitted, the saturation of the color is measured and returned.
-
-Saturatio is useful for 'toning down' a color in a design. Given a bright sharp accent color, you may want to display a greyer version for a large background section.</further>
-<seealso>
- * Related functions: [Hue][1], [Lightness][2].
- * See also [Color Theory][3].
-[1]:/docs.aspx/functions/hue
-[2]:/docs.aspx/functions/lightness
-[3]:http://en.wikipedia.org/wiki/Color_theory "Color Theory at Wikipedia"</seealso>
-    <params>color, [number]</params>
-    <exampleLess>
-      <![CDATA[
-@base_color: #ffcc00;
-a.example1 div { background: saturation(@base_color, -80); }
-a.example1:hover div { background: saturation(@base_color, -50); }
 ]]>
-    </exampleLess>
-    <exampleBody>
-      <![CDATA[<a class="example1" href="#"><div class="exampleBox" style="color: #000;">Mouse over me!</div></a>]]>
     </exampleBody>
   </topic>
 
-  <topic name="Lightness" order="30">
-    <description>Change or measure brightness of a color</description>
-    <further>When given a number, Lightness increases or decreases the 'brightness' of a color. If the number is omitted, then the lightness of the color is measured and returned.
+  <topic name="saturation">
+    <description>
+      Returns or modifies the saturation of a color
+    </description>
+    <further>
+#### Parameters
 
-Lightness is not disimilar to Saturation, except it preserves the underlying color (to an extent). The number value increases or decreases the brightness. 100 produces white and -100 black (or typically 50 and -50). As with saturation, lightness can be used 'tone down' an accent color for a large block or background.
+ * `color`
+ * `amount` - **(optional)** Should be between -100% and 100% inclusive. 
+
+When `amount` is specified, returns a new color with the saturation component modified by that amount. Otherwise returns the saturation component of the specified color in percent.
     </further>
-    <seealso>
-      <![CDATA[  * Related functions: [Hue][1], [Saturation][2].
-  * See also [Color Theory][3].
-  [1]:/docs.aspx/functions/hue
-  [2]:/docs.aspx/functions/saturation
-  [3]:http://en.wikipedia.org/wiki/Color_theory "Color Theory at Wikipedia" ]]>
-</seealso>
-    <params>color, [number]</params>
+    <params>color, [amount]</params>
     <exampleLess>
       <![CDATA[
-@base_color: #25A;
-.baseColor { 
-  color: lightness(@base_color, 0); 
-} 
-.example1 { 
-  background: lightness(@base_color, 40);
-  color: lightness(@base_color, -20);
+@base_color: #cc8844;
+.example {
+  background: saturation(@base_color, -20);
+  :hover { 
+    background: saturation(@base_color, 50);
+  }
 }
 ]]>
     </exampleLess>
     <exampleBody>
-      <![CDATA[
-<div class="baseColor">Base Color</div>
-<div class="example1">Example Output</div>
+<![CDATA[
+<div class="example">Mouse over me!</div>
 ]]>
     </exampleBody>
   </topic>
 
-  <topic name="Red, Green, Blue" order="40">
-    <description>Change or measure the RGB of a color</description>
-    <further>Red, Green and Blue are three functions which each affect their respective section of a colors Red, Green or Blue value.
+  <topic name="lightness">
+    <description>
+      Returns or modifies the brightness of a color
+    </description>
+    <further>
+#### Parameters
 
-When given a number, it increases or decreases the Red, Green or Blue of the color and limits the color channel to it's boundaries (0..255). If the number is omitted, then the Red, Green or Blue value is returned.
+ * `color`
+ * `amount` - **(optional)** Should be between -100% and 100% inclusive. 
 
-The color mechanism works using an addative color model. Like with shining lights, given a white light adding a red light has no effect. Unlike mixing paint where adding red and white gives pink.
+When `amount` is specified, returns a new color with the lightness component modified by that amount. Otherwise returns the lightness component of the specified color in percent.
     </further>
-<seealso>
-  * See also [Additive color][1].
-  [1]:http://en.wikipedia.org/wiki/Additive_color "Addative color at Wikipedia" 
-</seealso>
-    <params>color, [number]</params>
+    <params>color, [amount]</params>
     <exampleLess>
       <![CDATA[
-@base_color: #777777;
-.example1 { background: @base_color; }
-.example2 { background: red(@base_color, 90); }
-.example3 { background: green(@base_color, 90); }
-.example4 { background: blue(@base_color, 90); }
+@base_color: #2255aa;
+.example1 { background: @base_color; } 
+.example2 { background: lightness(@base_color, -10); }
+.example3 { background: lightness(@base_color, 10); }
+.example4 { background: lightness(@base_color, 20); }
 ]]>
     </exampleLess>
     <exampleBody>
-      <![CDATA[
+<![CDATA[
+<div class="example1">Base Color</div>
+<div class="example2">Darker</div>
+<div class="example3">Lighter</div>
+<div class="example4">Even Lighter</div>
+]]>
+    </exampleBody>
+  </topic>
+
+  <topic name="red">
+    <description>
+      Returns or modifies the red component of a color
+    </description>
+    <further>
+#### Parameters
+
+ * `color`
+ * `amount` - **(optional)** Should be between -255 and 255 inclusive, or between -100% and 100% inclusive. 
+
+When `amount` is specified, returns a new color with the red component modified by that amount. Otherwise returns the red component of the specified color.
+    </further>
+    <params>color, [amount]</params>
+    <exampleLess>
+<![CDATA[
+@base_color: #888888;
+.example1 { background: @base_color; }
+.example2 { background: red(@base_color, 50%); }
+.example3 { background: red(@base_color, -50%); }
+]]>
+    </exampleLess>
+    <exampleBody>
+<![CDATA[
 <div class="example1">Original</div>
 <div class="example2">More Red</div>
-<div class="example3">More Green</div>
-<div class="example4">More Blue</div>
+<div class="example3">Less Red</div>
 ]]>
     </exampleBody>
   </topic>
 
-  <topic name="RGB" order="43">
-    <description>Define color using RGB model</description>
-    <further>Define a color by specifying the amounts of Red, Green and Blue.</further>
-      <seealso>
-  * Related functions: [HSL][1].
-[1]:/docs.aspx/functions/hsl
-    </seealso>
-    <params>number, number, number</params>
+  <topic name="green">
+    <description>
+      Returns or modifies the green component of a color
+    </description>
+    <further>
+#### Parameters
+
+ * `color`
+ * `amount` - **(optional)** Should be between -255 and 255 inclusive, or between -100% and 100% inclusive. 
+
+When `amount` is specified, returns a new color with the green component modified by that amount. Otherwise returns the green component of the specified color.
+    </further>
+    <params>color, [amount]</params>
     <exampleLess>
-      <![CDATA[
-.example1 { background: rgb( 100%, 0%, 0%); }
-.example2 { background: rgb(80%, 80%, 80%); }
-.example3 { background: rgb(30%, 80%, 30%); }
-.example4 { background: rgb(10, 172, 223); }
+<![CDATA[
+@base_color: #888888;
+.example1 { background: @base_color; }
+.example2 { background: green(@base_color, 50%); }
+.example3 { background: green(@base_color, -50%); }
 ]]>
     </exampleLess>
     <exampleBody>
-      <![CDATA[
+<![CDATA[
+<div class="example1">Original</div>
+<div class="example2">More Green</div>
+<div class="example3">Less Green</div>
+]]>
+    </exampleBody>
+
+  </topic>
+
+  <topic name="blue">
+    <description>
+      Returns or modifies the blue component of a color
+    </description>
+    <further>
+#### Parameters
+
+ * `color`
+ * `amount` - **(optional)** Should be between -255 and 255 inclusive, or between -100% and 100% inclusive. 
+
+When `amount` is specified, returns a new color with the blue component modified by that amount. Otherwise returns the blue component of the specified color.
+    </further>
+    <params>color, [amount]</params>
+    <exampleLess>
+<![CDATA[
+@base_color: #888888;
+.example1 { background: @base_color; }
+.example2 { background: blue(@base_color, 50%); }
+.example3 { background: blue(@base_color, -50%); }
+]]>
+    </exampleLess>
+    <exampleBody>
+<![CDATA[
+<div class="example1">Original</div>
+<div class="example2">More Blue</div>
+<div class="example3">Less Blue</div>
+]]>
+    </exampleBody>
+
+  </topic>
+
+  <topic name="rgb">
+    <description>
+      Returns a color with the specified red, green and blue components
+    </description>
+    <further>
+#### Parameters
+
+ * `red` - can be between 0 and 255 inclusive, or between 0% and 100% inclusive
+ * `green` - can be between 0 and 255 inclusive, or between 0% and 100% inclusive
+ * `blue` - can be between 0 and 255 inclusive, or between 0% and 100% inclusive
+    </further>
+    <params>red, green, blue</params>
+    <exampleLess>
+<![CDATA[
+.example1 { background: rgb(100%,  0%,  0%); }
+.example2 { background: rgb( 80%, 80%, 80%); }
+.example3 { background: rgb( 30%, 80%, 30%); }
+.example4 { background: rgb(  10, 172, 223); }
+]]>
+    </exampleLess>
+    <exampleBody>
+<![CDATA[
+<div class="example1">One</div>
+<div class="example2">Two</div>
+<div class="example3">Three</div>
+<div class="example4">Four</div>
+]]>
+    </exampleBody>
+  </topic>
+
+  <topic name="rgba">
+    <description>
+      Returns a color with the specified red, green, blue and alpha components
+    </description>
+    <further>
+#### Parameters
+
+ * `red` - can be between 0 and 255 inclusive, or between 0% and 100% inclusive
+ * `green` - can be between 0 and 255 inclusive, or between 0% and 100% inclusive
+ * `blue` - can be between 0 and 255 inclusive, or between 0% and 100% inclusive
+ * `alpha` - can be between 0 and 1 inclusive, or between 0% and 100% inclusive
+    </further>
+    <params>red, green, blue, alpha</params>
+    <exampleLess>
+<![CDATA[
+.example1 { background: rgba( 30%, 80%, 30%, 50%); }
+.example2 { background: rgba( 30%, 80%, 30%, 0.75); }
+.example3 { background: rgba( 30%, 80%, 30%, 1); }
+.example4 { background: rgba( 30%, 80%, 30%, 0); }
+]]>
+    </exampleLess>
+    <exampleBody>
+<![CDATA[
+<div class="example1">One</div>
+<div class="example2">Two</div>
+<div class="example3">Three</div>
+<div class="example4">Four</div>
+]]>
+    </exampleBody>
+  </topic>
+
+  <topic name="rgba">
+    <description>
+      Changes the alpha component of the specified color.
+    </description>
+    <further>
+#### Parameters
+
+ * `color`
+ * `alpha` - can be between 0 and 1 inclusive, or between 0% and 100% inclusive
+
+The new color has the same red, green and blue components and the specified color but with the alpha component set to `alpha`.
+    </further>
+    <params>color, alpha</params>
+    <exampleLess>
+<![CDATA[
+.example1 { background: rgb(red, 0.5); }
+.example2 { background: rgb(yellow, 0.75); }
+.example3 { background: rgb(#fe9821, 1); }
+.example4 { background: rgb(#ffffff, 0); }
+]]>
+    </exampleLess>
+    <exampleBody>
+<![CDATA[
 <div class="example1">One</div>
 <div class="example2">Two</div>
 <div class="example3">Three</div>
@@ -151,27 +280,28 @@ The color mechanism works using an addative color model. Like with shining light
   </topic>
 
 
-  <topic name="HSL" order="45">
-    <description>Define color using HSL model</description>
-    <further>Define a color by specifying the Hue, Saturation and Lightness.</further>
-    <seealso>
-   * Related functions: [Hue][1], [Saturation][2], [Lightness][3], [RGB][4].
-[1]:/docs.aspx/functions/hue
-[2]:/docs.aspx/functions/saturation
-[3]:/docs.aspx/functions/lightness
-[4]:/docs.aspx/functions/rgb
-    </seealso>
-    <params>number, number, number</params>
+  <topic name="hsl">
+    <description>
+      Returns a color with the specified hue, saturation and lightness components
+    </description>
+    <further>
+#### Parameters
+
+ * `hue` - should be between 0 and 360 inclusive
+ * `saturation` - should be between 0% and 100% inclusive
+ * `lightness` - should be between 0% and 100% inclusive
+    </further>
+    <params>hue, saturation, lightness</params>
     <exampleLess>
-      <![CDATA[
+<![CDATA[
 .example1 { background: hsl( 30, 80%, 70%); }
 .example2 { background: hsl(210, 50%, 50%); }
 .example3 { background: hsl(170, 80%, 30%); }
-.example4 { background: hsl(0, 0%, 70%); }
+.example4 { background: hsl(  0,  0%, 70%); }
 ]]>
     </exampleLess>
     <exampleBody>
-      <![CDATA[
+<![CDATA[
 <div class="example1">One</div>
 <div class="example2">Two</div>
 <div class="example3">Three</div>
@@ -180,49 +310,116 @@ The color mechanism works using an addative color model. Like with shining light
     </exampleBody>
   </topic>
 
-  <topic name="Complement" order="50">
-    <description>A half turn of the color wheel</description>
-    <further>The complement function performs the same action as Hue given a value of 180.</further>
-<seealso>
-  * Related functions: [Hue][1].
-  * See also [Complementary color][2].
-  [1]:/docs.aspx/functions/hue
-  [2]:http://en.wikipedia.org/wiki/Complementary_color "Complementary color at Wikipedia"  
-</seealso>
+
+  <topic name="hsla">
+    <description>
+      Returns a color with the specified hue, saturation, lightness and alpha components
+    </description>
+    <further>
+#### Parameters
+
+ * `hue` - should be between 0 and 360 inclusive
+ * `saturation` - should be between 0% and 100% inclusive
+ * `lightness` - should be between 0% and 100% inclusive
+ * `alpha` - can be between 0 and 1 inclusive, or between 0% and 100% inclusive
+    </further>
+    <params>hue, saturation, lightness, alpha</params>
+    <exampleLess>
+<![CDATA[
+.example1 { background: hsla(210, 100%, 50%, 0.5); }
+.example2 { background: hsla(210, 100%, 50%, 75%); }
+.example3 { background: hsla(210, 100%, 50%, 1); }
+.example4 { background: hsla(210, 100%, 50%, 0); }
+]]>
+    </exampleLess>
+    <exampleBody>
+<![CDATA[
+<div class="example1">One</div>
+<div class="example2">Two</div>
+<div class="example3">Three</div>
+<div class="example4">Four</div>
+]]>
+    </exampleBody>
+  </topic>
+
+  <topic name="complement">
+    <description>
+      Returns the complement of a color
+    </description>
+    <further>
+#### Parameters
+
+ * `color`
+
+This is equivalent to `hue(@color, 180)`.
+    </further>
     <params>color</params>
     <exampleLess>
-      <![CDATA[
-@base_color: #4AF;
+<![CDATA[
+@base_color: #44aaff;
 .example1 { background: @base_color; }
 .example2 { background: complement(@base_color); }
 .example3 { background: hue(@base_color, 180); }
 ]]>
     </exampleLess>
     <exampleBody>
-      <![CDATA[
+<![CDATA[
 <div class="example1">Original</div>
-<div class="example2">Comeplement</div>
+<div class="example2">Complement</div>
 <div class="example3">Hue 180</div>
 ]]>
     </exampleBody>
   </topic>
 
-  <topic name="Mix" order="90">
-    <description>Mix two colors together. </description>
-    <further>For example, red and yellow gives you orange. You can also specify a weighting for the mix ratio as a percentage for the first color. To make a more yellowy orange, we can specify only 20% of the red is used.</further>
-    <params>color, color, [number]</params>
+  <topic name="grayscale">
+    <description>
+      Converts a color to grayscale
+    </description>
+    <further>
+#### Parameters
+
+ * `color`
+
+This is equivalent to `saturation(@color, -100%)`.
+    </further>
+    <params>color</params>
     <exampleLess>
-      <![CDATA[
-@colorRed: #ff0000;
-@colorYellow: #ffff00;      
-.example1 { background: mix(@colorRed, @colorYellow); } 
-.example2 { background: mix(@colorRed, @colorYellow, 20%); } 
+<![CDATA[
+@base_color: #ffaa44;
+.example1 { background: @base_color; }
+.example2 { background: grayscale(@base_color); }
+.example3 { background: saturation(@base_color, -100%); }
 ]]>
     </exampleLess>
     <exampleBody>
-      <![CDATA[
+<![CDATA[
+<div class="example1">Original</div>
+<div class="example2">Grayscale</div>
+<div class="example3">Desaturated</div>
+]]>
+    </exampleBody>
+  </topic>
+
+  <topic name="mix">
+    <description>
+      Mix two colors together
+    </description>
+    <further>
+Mixes together two colors. Specifically, takes the average of each of the RGB components, optionally weighted by the given percentage. The opacity of the colors is also considered when weighting the components.
+
+The weight specifies the amount of the first color that should be included in the returned color. The default, 50%, means that half the first color and half the second color should be used. 25% means that a quarter of the first color and three quarters of the second color should be used.
+    </further>
+    <params>color1, color2, [weight = 50%]</params>
+    <exampleLess>
+<![CDATA[     
+.example1 { background: mix(red, yellow); } 
+.example2 { background: mix(red, yellow, 20%); } 
+]]>
+    </exampleLess>
+    <exampleBody>
+<![CDATA[
 <div class="example1">Orange</div>
-<div class="example2">Yellowy!</div>
+<div class="example2">More Yellow</div>
 ]]>
     </exampleBody>
   </topic>

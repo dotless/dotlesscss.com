@@ -129,6 +129,7 @@
       <LastGenOutput>T4CSS.log</LastGenOutput>
     </None>
     <None Include="Views\Home\index.spark" />
+    <None Include="Views\Home\tryit.spark" />
     <None Include="Views\Layouts\Application.spark" />
     <None Include="Views\Shared\_global.spark" />
   </ItemGroup>

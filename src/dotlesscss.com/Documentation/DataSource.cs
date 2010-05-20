@@ -18,9 +18,6 @@ namespace dotlesscss.com.Documentation
     [XmlAttribute("order")]
     public int SortOrder { get; set; }
 
-    [XmlElement("description")]
-    public string Description { get; set; }
-
     [XmlElement(Type = typeof(Topic), ElementName = "topic")]
     public List<Topic> Topics;
   }
@@ -30,9 +27,6 @@ namespace dotlesscss.com.Documentation
     [XmlAttribute("name")]
     public string Name { get; set; }
 
-    [XmlAttribute("order")]
-    public int SortOrder { get; set; }
-
     [XmlElement("params")]
     public string Parameters;
 
@@ -41,9 +35,6 @@ namespace dotlesscss.com.Documentation
 
     [XmlElement("further")]
     public string FurtherDescription { get; set; }
-
-    [XmlElement("seealso")]
-    public string SeeAlso { get; set; }
 
     [XmlElement("exampleLess")]
     public string ExampleLess { get; set; }
@@ -76,7 +67,6 @@ namespace dotlesscss.com.Documentation
       }
 
       Chapters.Sort((x, y) => x.SortOrder - y.SortOrder);
-      Chapters.ForEach(chapter => chapter.Topics.Sort((x, y) => x.SortOrder - y.SortOrder));
     }
 
     public static Chapter FindChapter(string chapterName)

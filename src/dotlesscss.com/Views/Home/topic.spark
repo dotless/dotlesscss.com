@@ -1,49 +1,55 @@
 ﻿
 <div id="documentation" class="content">
-<viewdata model="dotlesscss.com.Models.TopicModel"/>
+<viewdata model="TopicModel"/>
 
-  <div class="reference">
+  <div id="reference">
     <for each="var chapter in Model.All">
       <h4>${chapter.Name}</h4>
       <for each="var topic in chapter.Topics">
         <div>
-          ${ Html.ActionLink(topic.Name, "Docs", "Home", new { chapterName = chapter.Name, topicName = topic.Name }, null) }
+          ${ Html.RouteLink(topic.Name, "docs", new { chapterName = chapter.Name, topicName = topic.Name }) }
         </div>
       </for>
     </for>
   </div>
 
-  <div class="article">  
+  <div id="article">  
     <h2>${Model.Name}</h2>
     <pre>${Model.Name.ToLower()}(${Model.Parameters})</pre>
 
     <markdown xml:space="preserve">
-${Model.Description}.
+${Model.Description}
+
 ${Model.FurtherDescription}
-${Model.SeeAlso}
     </markdown>
 
-    <div if="!string.IsNullOrEmpty(Model.ExampleLess)">
-      <h4>Example</h4>
-
+    <div id="example" if="!string.IsNullOrEmpty(Model.ExampleLess)">
       #> Html.BeginForm();
-        ${ Html.TextAreaFor(m => m.ExampleLess, new { rows = 5, cols = 80, style = "border: 1px solid #999; padding: 3px;"}) }
-        <br/>
+        <div id="input" class="left">
+          <h4>Example</h4>
+
+          ${ Html.TextAreaFor(m => m.ExampleLess, new { rows = Model.ExampleLess.Split((char)'\n').Length, cols = 80, wrap = "off" }) }
+          <br/>
+        </div>
+
+        <div id="output" class="right">
+          <h4>Output</h4>
+
+          <pre>${Model.ExampleCss}</pre>
+        </div>
+
+        <div class="clearer"></div>
         <input type="submit" value="Update example" />
       #> Html.EndForm();
 
-      <h5>Output</h5>
-    
-      <pre>${Model.ExampleCss}</pre>
+      <div id="demo-box">
+        <h4>Demo</h4>
 
-      <h5>Demo</h5>
-
-      <div class="example">
-        #>// TODO: show html and output divs side by side
-        <div class="html">
+        <div id="html" class="left">
           <pre>${ Html.Encode(Model.ExampleBody) }</pre>
         </div>
-        <div class="output">
+
+        <div id="demo" class="right">
           <content name="head">
             <style type="text/css">
               ${Model.ExampleCss}
@@ -52,7 +58,7 @@ ${Model.SeeAlso}
           ${Model.ExampleBody}
         </div>
       </div>
-      <div style="clear:both;"></div>
+      <div class="clearer"></div>
     </div>
   </div>
 </div>
