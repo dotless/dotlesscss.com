@@ -71,15 +71,15 @@ namespace dotlesscss.com.Controllers
 @base_color: #cc8844;
 #example1 {
   background: @base_color;
-  :hover { background: saturation(@base_color, 50%); }
+  &:hover { background: saturation(@base_color, 50%); }
 }
 #example2 {
   background: @base_color;
-  :hover { background: lightness(@base_color, 30%); }
+  &:hover { background: lightness(@base_color, 30%); }
 }
 #example3 {
   background: @base_color;
-  :hover { background: hue(@base_color, -70); }
+  &:hover { background: hue(@base_color, -70); }
 }
 ";
       return TryIt(defaultHtml, defaultLess);
@@ -98,12 +98,7 @@ namespace dotlesscss.com.Controllers
 
     public string ProcessLess(string less)
     {
-      var config = DotlessConfiguration.Default;
-      config.MinifyOutput = false;
-      var engine = (new EngineFactory()).GetEngine(config);
-      var ob = new LessSourceObject { Content = less };
-
-      return engine.TransformToCss(ob);
+      return Less.Parse(less);
     }
   }
 }

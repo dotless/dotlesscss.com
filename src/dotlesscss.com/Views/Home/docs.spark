@@ -21,7 +21,7 @@
 [Nested Rules](#nested-rules)  
 [Operators](#operators)  
 [Functions](#functions)  
-[Namespaces &amp; Accessors](#namespaces-accessors)  
+[Namespaces](#namespaces)  
 [Scope](#scope)  
 [Comments](#comments)  
 [Importing](#importing)  
@@ -41,43 +41,42 @@ The command line tool is `dotless.Compiler.exe`, and it looks something like thi
 
     $ dotless.Compiler source [destination]
 
-The `source` is the .LESS file you want to compile, and the `destination` is the (optional) CSS file you want to compile it to. 
-If you don't specify a destination, `dotless.Compiler` will base it on the source you specified:
+The `source` is the .LESS file you want to compile, and the `destination` is the (optional) CSS file you want to compile it to.
+If you don't specify a destination, `dotless.Compiler` will base it on the source you specified. If the extension of the `source` file is ".less" you can optionally omit it:
 
-    $ dotless.Compiler style.less style.less.css
-    $ dotless.Compiler style.less
+    $ dotless.Compiler style.less style.css
+    $ dotless.Compiler style
 
 Are equivalent.
 
 
 <h2 id="watching">Watching</h2>
 
-`dotless.Compiler` also comes with an option to watch your `.less` file for any change, and recompile it automatically:
+`dotless.Compiler` also comes with an option to watch your `.less` files for any change, and recompile it automatically:
 
     $ dotless.Compiler style.less --watch
 
-Now, whenever you save your file, `dotless.Compiler` will try to compile it. If there are errors, it will ask you to fix them before continuing.
+Now, whenever you save your file, or any file which it imports, `dotless.Compiler` will re-compile it. If there are errors, it will ask you to fix them before continuing.
 
-    Compiling style.less -> style.less.css [Done]
+    Compiling style.less -> style.css [Done]
     Hit Enter to stop watching
     Watching style.less for changes
-    Found change in file. Recompiling...
-    Compiling style.less -> style.less.css [Done]
+    Watching import.less for changes
+    Found change in 'style.less'. Recompiling...
+    Compiling style.less -> style.css [Done]
 
 
 <h2 id="from-code">From code</h2>
 
 Add a reference to dotless.Core.dll
 
-    using dotless.Core
-    
-    var factory = new EngineFactory();
-    var engine = factory.GetEngine(DotlessConfiguration.Default);
-    var css = engine.TransformToCss(new LessSourceObject {Content = "div { width: 1 + 1 }"});
+    Less.Parse("div { width: 1 + 1 }");
 
 which will output
 
-    div { width: 2; }
+    div {
+      width: 2;
+    }
 
 
 
@@ -91,11 +90,15 @@ These are pretty self-explanatory:
     @nice-blue: #5B83AD;
     @light-blue: @nice-blue + #111;
 
-    #header { color: @light-blue; }
+    #header {
+      color: @light-blue;
+    }
 
 Outputs:
 
-    #header { color: #6c94be; }
+    #header {
+      color: #6c94be;
+    }
 
 Note that variables are actually 'constants' in that they can only be defined once.
 
@@ -152,7 +155,7 @@ In .LESS, we can also write it this way:
       }
       .logo {
         width: 300px;
-        :hover { text-decoration: none }
+        &:hover { text-decoration: none }
       }
     }
 
@@ -167,15 +170,15 @@ Any number, color or variable can be operated on. Here are a couple of examples:
     @filler: @base * 2;
     @other: @base + @filler;
 
-    color: #888 / 4;
+    @base-color: #888 / 4;
     background-color: @base-color + #111;
     height: 100% / 2 + @filler;
 
-The output is pretty much what you expect—.LESS understands the difference between colors and units. If a unit is used in an operation, like in:
+The output is pretty much what you expect — .LESS understands the difference between colors and units. If a unit is used in an operation, like in:
 
     @var: 1px + 5;
 
-.LESS will use that unit for the final output—`6px` in this case.
+.LESS will use that unit for the final output — `6px` in this case.
 
 
 <h2 id="functions">Functions</h2>
@@ -195,7 +198,7 @@ Is compiled to
 See the [function reference](${ Url.RouteUrl("docs", new { chapterName = "functions" }) }) for a full list of available functions.
 
 
-<h2 id="namespaces-accessors">Namespaces &amp; Accessors</h2>
+<h2 id="namespaces">Namespaces</h2>
 
 Sometimes, you may want to group your variables or mixins, for organizational purposes, or just to offer some encapsulation. 
 You can do this pretty intuitively in .LESS—say you want to bundle some mixins and variables under `#bundle`, for later re-use, or for distributing:
@@ -205,7 +208,7 @@ You can do this pretty intuitively in .LESS—say you want to bundle some mixins
         display: block;
         border: 1px solid black;
         background-color: grey;
-        :hover { background-color: white }
+        &:hover { background-color: white }
       }
       .tab { ... }
       .citation { ... }
@@ -217,24 +220,6 @@ Now if we want to mixin the `.button` class in our `#header a`, we can do:
       color: orange;
       #bundle > .button;
     }
-
-.LESS also allows you to access specific properties or variables from different rule-sets:
-
-    #defaults {
-      @width: 960px;
-      @color: black;
-    }
-
-    .article { color: #294366; }
-
-    .comment {
-      width: #defaults[@width];
-      color: .article['color']; 
-    }
-
-Variables and accessors can be used almost interchangeably, use whichever is best suited for the situation—accessors 
-might make more sense if that property only needs to be accessed once.
-
 
 <h2 id="scope">Scope</h2>
 
@@ -253,21 +238,35 @@ and if they aren't found, the compiler will look in the parent scope, and so on.
 
 <h2 id="comments">Comments</h2>
 
-Both C-style and inline comments are authorized:
+Both block and inline comments are authorized:
 
-    /* One hell of a comment */
-    @var: red;
+    #error {
+      /* One hell of a comment */
+      color: red;
 
-    // Get in line!
-    @var: white;
+      // Get in line!
+      background: white;
+    }
 
+Inline comments are removed from the output css and by default block comments are kept. So the above would output:
+
+    #error {
+      /* One hell of a comment */
+      color: red;
+      background: white;
+    }
 
 <h2 id="importing">Importing</h2>
 
-Importing works pretty much as expected. You can import a `.less` file, and all the variables in it will be available. If the file is a `.less`, the extension is optional:
+Importing works pretty much as expected. You can import a `.less` file, and all the variables in it will be
+available. If the file is a `.less` the extension is optional:
 
     @import "library";
+    @import "import.less";
     @import "typo.css";
+
+If the file is a `.css` however, the @import statement will not import the contents of the file. It will instead
+leave the `@import` statment in the output. This is so the browser can cache the contents of your static css files.
 
     </markdown>
   </div>

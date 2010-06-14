@@ -22,7 +22,7 @@
   </div>
 
   <div id="output">
-    <h4>Output</h4>
+    <h4>Css</h4>
     <pre>${ css }</pre>
   </div>
 

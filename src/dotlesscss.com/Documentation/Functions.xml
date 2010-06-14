@@ -50,7 +50,7 @@ When `amount` is specified, returns a new color with the saturation component mo
 @base_color: #cc8844;
 .example {
   background: saturation(@base_color, -20);
-  :hover { 
+  &:hover { 
     background: saturation(@base_color, 50);
   }
 }
@@ -217,7 +217,7 @@ When `amount` is specified, returns a new color with the blue component modified
     </exampleBody>
   </topic>
 
-  <topic name="rgba">
+  <topic name="rgba(r,g,b,a)">
     <description>
       Returns a color with the specified red, green, blue and alpha components
     </description>
@@ -248,7 +248,7 @@ When `amount` is specified, returns a new color with the blue component modified
     </exampleBody>
   </topic>
 
-  <topic name="rgba">
+  <topic name="rgba(c,a)">
     <description>
       Changes the alpha component of the specified color.
     </description>
