@@ -90,7 +90,14 @@ namespace dotlesscss.com.Controllers
     public ActionResult TryIt(string html, string less)
     {
       ViewData["less"] = less.Trim();
-      ViewData["css"] = ProcessLess(less);
+      try
+      {
+        ViewData["css"] = ProcessLess(less);
+      }
+      catch (Exception e)
+      {
+        ViewData["css"] = e.Message;
+      }
       ViewData["html"] = html.Trim();
 
       return View();
