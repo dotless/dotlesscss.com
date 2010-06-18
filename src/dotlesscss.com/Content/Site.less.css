@@ -254,8 +254,7 @@ h3 {
   
   #input, #html {
     float: left;
-    width: 49%;
-    height: 30%;
+    width: 100%;
     margin: 0;
     
     textarea {
@@ -268,10 +267,8 @@ h3 {
   #html textarea { height: 100px; }
   #output, #demo {
     float: left;
-    width: 49%;
-    height: 30%;
+    width: 100%;
     margin: 0;
-    margin-left: 2%;
   }
   
   #demo > div {

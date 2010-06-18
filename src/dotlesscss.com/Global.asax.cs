@@ -5,6 +5,7 @@ using Spark;
 namespace dotlesscss.com
 {
     using System;
+    using dotless.Core.configuration;
 
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
   // visit http://go.microsoft.com/?LinkId=9394801
@@ -35,7 +36,9 @@ namespace dotlesscss.com
 
       RegisterRoutes(RouteTable.Routes);
 
-      dotless.Core.configuration.DotlessConfiguration.Default.Logger = typeof(HttpContextLogger);
+      DotlessConfiguration.Default.Logger = typeof(HttpContextLogger);
+      DotlessConfiguration.Default.Web = true;
+      DotlessConfiguration.Default.CacheEnabled = false;
 
       ISparkSettings settings = new SparkSettings()
         .SetStatementMarker("#>"); // change the statement marker because css lines may start with #

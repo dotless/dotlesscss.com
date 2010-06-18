@@ -10,6 +10,7 @@
 <#@ assembly name="System.Xml.Linq" #><#@ import namespace="System" #>
 <#@ import namespace="dotless.Core" #>
 <#@ import namespace="dotless.Core.configuration" #>
+<#@ import namespace="dotless.Core.Input" #>
 <#@ import namespace="System.CodeDom" #>
 <#@ import namespace="System.CodeDom.Compiler" #>
 <#@ import namespace="System.Collections.Generic" #>
@@ -52,19 +53,17 @@ Converting:
 <# }
       
 var manager = Manager.Create(Host, GenerationEnvironment);
-var configuration = new DotlessConfiguration();
+var configuration = DotlessConfiguration.Default;
 configuration.MinifyOutput = _minimize;
-var dotLess = new EngineFactory().GetEngine(configuration);
+var dotLess = new EngineFactory(configuration).GetEngine();
 foreach(var cssFile in cssFiles) 
 {
     manager.StartNewFile(GetCssFileName(cssFile));
     try
     {
-
-   
-    var fs = new FileSource();
-    var lso = fs.GetSource(cssFile);
-        string css = dotLess.TransformToCss(lso);
+        var fr = new FileReader();
+        var less = fr.GetFileContents(cssFile);
+        string css = dotLess.TransformToCss(less, cssFile);
         Write(css);
     }
     catch(Exception e) 

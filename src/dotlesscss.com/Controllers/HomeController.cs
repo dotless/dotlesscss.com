@@ -99,7 +99,7 @@ namespace dotlesscss.com.Controllers
         ViewData["css"] = e.Message;
       }
 
-      var logMessage = HttpContextLogger.GetLog();
+      var logMessage = HttpContextLogger.GetLog(HttpContext);
       if (!string.IsNullOrEmpty(logMessage))
           ViewData["css"] = logMessage; // add new element ViewData["log"] instead of overriding css
 
